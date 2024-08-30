@@ -1,0 +1,42 @@
+site_name: Súper Proyecto de Modelos Probabilísticos
+
+nav:
+  - Inicio: index.md
+  - Recopilación: recopilacion.md
+  - Procesamiento: procesamiento.md
+  - Modelos: modelos.md
+  - Instrucciones: instrucciones.md
+
+theme: 
+  name: material
+  language: es
+  palette:
+    primary: black
+  logo: img/plot.png
+  favicon: img/plot.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - content.tooltips
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - md_in_html
+  - footnotes
+  - abbr
+  - attr_list
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

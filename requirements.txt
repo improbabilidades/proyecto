@@ -1,0 +1,7 @@
+requests
+celery[redis]
+sqlalchemy
+pandas
+scipy
+matplotlib
+mkdocs-material
