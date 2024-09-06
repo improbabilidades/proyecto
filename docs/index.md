@@ -1,11 +1,8 @@
 # Proyecto de programación
 
-Este es el proyecto de:
-
-- Fulanito de Tal, B74653
-- Mengano de Tal, B083472
-
 Esta es la documentación del proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas.
+
+Los objetivos están a continuación en esta página, mientras que una introducción a los temas de recopilación, procesamiento y modelado de datos están en páginas aparte. Finalmente están las instrucciones específicas del proyecto.
 
 ## Objetivo general
 
@@ -13,19 +10,23 @@ Implementar una canalización (*pipeline*) en tiempo real para procesamiento y a
 
 ## Objetivos específicos
 
-### Objetivos de programación
+### Objetivos de *programación*
 
 1. Configurar tareas periódicas
-2. Recopilar datos con API web
+2. Recopilar datos de un API web
 3. Procesar datos tipo JSON
 4. Utilizar bases de datos
 5. Documentar resultados 
 
-### Objetivos de estadística y probabilidad
+### Objetivos de *estadística y probabilidad*
 
-1. Realizar análisis exploratorios de datos
+1. Realizar análisis exploratorios de datos con estadística descriptiva (media, varianza, etc.)
 2. Determinar modelos de probabilidad y sus parámetros
 3. Graficar datos y sus modelos
+4. Encontrar una expresión analítica para una transformación de variables aleatorias
+5. Comparar los datos de la variable transformada con el modelo analítico
+
+### Objetivos de *aplicación*
 
 4. Explorar fuentes de datos en tiempo real para su recopilación y análisis.
 5. Utilizar interfaces de programación de aplicaciones (API) de forma programática para obtener datos de fuentes externas.

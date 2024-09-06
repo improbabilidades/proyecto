@@ -1,4 +1,4 @@
-site_name: Súper Proyecto de Modelos Probabilísticos
+site_name: Proyecto de Programación de Modelos Probabilísticos
 
 nav:
   - Inicio: index.md
@@ -6,12 +6,13 @@ nav:
   - Procesamiento: procesamiento.md
   - Modelos: modelos.md
   - Instrucciones: instrucciones.md
+  - Atributos: atributos.md
 
 theme: 
   name: material
   language: es
   palette:
-    primary: black
+    primary: red
   logo: img/plot.png
   favicon: img/plot.png
   features:

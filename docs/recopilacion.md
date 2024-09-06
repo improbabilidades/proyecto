@@ -1,16 +1,16 @@
 # Recopilación y almacenamiento de datos
 
-El análisis de datos comienza con la recopilación de datos. Podríamos separar la recopilación en dos grandes paradigmas:
+El análisis de datos comienza con la *recopilación* de datos. Podríamos separar la recopilación en dos grandes paradigmas:
 
-- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic (necesariamente recolectados una sola vez) o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones, que son actualizados aproximadamente cada 24 horas pero que contienen millones de interacciones.
+- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones, que son actualizados aproximadamente cada 24 horas pero que contienen millones de nuevas interacciones.
 - **Procesamiento en tiempo real** (*real-time processing*): consiste en la recolección de datos al momento de su ocurrencia, esto es, basado en eventos (*event-driven*) o con una frecuencia de recopilación tan alta que solamente algunos pocos nuevos datos, o ninguno, son obtenidos en cada muestreo. Ejemplos: datos sobre terremotos, mercados de valores o de redes de sensores recopilados cada 10 segundos.
 
-En medio de ambos hay una "zona gris" a menudo llamada **procesamiento en tiempo casi real** (*quasi real-time processing*) que captura la dinámica del sistema sin responder directamente a eventos o a una altísima frecuencia. Ejemplos: telemetría y rastreo en vehículos de transporte público, que actualizan datos cada 15 o 20 segundos, lo suficiente para tener una buena estimación de la posición, pero no totalmente "en tiempo real".
+En medio de ambos hay una "zona gris" a menudo llamada **procesamiento en tiempo casi real** (*quasi real-time processing*) que captura la dinámica del sistema sin responder directamente a eventos o a una altísima frecuencia. Ejemplos: telemetría y rastreo en vehículos de transporte público, que actualizan datos cada 15 o 20 segundos, lo suficiente para tener una buena estimación de su posición, pero no totalmente "en tiempo real".
 
 La definición varía según el fenómeno analizado, que puede tener cambios muy frecuentes o no.
 
 !!! note "Definición informal de procesamiento en tiempo real" 
-    Un flujo de datos en el cual el procesamiento de una nueva muestra es iniciado en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento.
+    Un flujo de datos en el cual el procesamiento de una nueva muestra es iniciado en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento es un procesamiento en tiempo real.
 
 ### ¿Y de dónde vienen estos datos?
 
@@ -20,16 +20,16 @@ A veces de un solo archivo (ejemplo, un `.xlsx` o `.csv`), a veces directamente 
 
 Algunos de los modelos de comunicación para compartir datos entre sistemas son:
 
-- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* del *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (404 Not Found) y los web API (sobre HTTP) que conectan distintos servicios. 
+- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* de un *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (404 Not Found) o las interfaces de programación de aplicaciones web (API, *Application Programming Interface*) que operan sobre HTTP y conectan distintos servicios. 
 - **Publicación/suscripción**: donde un *productor* *publica* un *mensaje* que coloca en un *canal* sobre un *tópico* y un *intermediador de mensajes* lo distribuye a todos los procesos que estén *suscritos*. Ejemplo: el monitoreo de eventos en la agricultura de precisión en una red de sensores conectada con [MQTT](https://mqtt.org/). 
-- **WebSockets**: donde hay un canal *permanente* de comunicación *bidireccional*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea.
+- **WebSockets**: donde hay un canal *permanente* de comunicación *bidireccional*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea. HTTP, en cambio, es una conexión no persistente.
 - Otros
 
-Una de las soluciones más populares es, precisamente, obtener datos de fuentes externas, y hacerlo por medio de una interfaz de programación de aplicaciones (API).
+Una de las soluciones más populares es obtener datos de fuentes externas, y hacerlo por medio de una interfaz de programación de aplicaciones (API).
 
 ### ¿Dónde son almacenados los datos?
 
-Luego, el análisis de datos típicamente continúa con el almacenamiento de datos después de la recopilación. Las bases de datos ofrecen almacenamiento permanente y son la solución necesaria en el caso de grandes cantidades de datos.
+Luego, el análisis de datos típicamente continúa con el almacenamiento de datos después de la recopilación. Las bases de datos ofrecen almacenamiento permanente y son una solución en el caso de grandes cantidades de datos.
 
 Nota: no siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego descartarlos.
 
@@ -67,7 +67,7 @@ Las bases de datos relacionales más conocidas son tipo SQL (*Structured Query L
 SELECT nombre, edad FROM estudiantes WHERE id = B00000;
 ```
 
-devuelve los datos (nombre, edad) del carné B00000.
+devuelve los datos `nombre` y `edad` del carné B00000 en la tabla `estudiantes`.
 
 En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros (CRUD, *Create, Read, Update, Delete*).
 
@@ -75,13 +75,13 @@ Los sistemas de administración de bases de datos (DBMS, *Data Base Management S
 
 ## ¿Qué haremos en el proyecto?
 
-Para este proyecto haremos una recopilación de datos en **tiempo *casi* real** de fuentes externas con un **Web API** y lo haremos de forma periódica, utilizando un administrador y planificador de tareas, para almacenarlos en una **base de datos relacional**.
+Para este proyecto haremos una recopilación de datos en **tiempo *casi* real** de fuentes externas con un **web API** y lo haremos de forma periódica, utilizando un administrador y planificador de tareas, para almacenarlos en una **base de datos relacional**.
 
 A continuación hay una ampliación de estos conceptos.
 
 ### Datos desde fuentes externas con API
 
-En el **PyX** [número 6](https://github.com/fabianabarca/python) hay una explicación más amplia sobre los Web API y el uso del paquete `requests` de Python.
+En el **PyX** [número 6](https://github.com/fabianabarca/python) hay una explicación más amplia sobre los web API y el uso del paquete `requests` de Python.
 
 Hay una gran cantidad de API públicos disponibles en [Public APIs](https://publicapis.dev/).
 
@@ -93,13 +93,13 @@ Por tanto, para un flujo de procesamiento de datos en tiempo real o en tiempo *c
 
 ### Administrador de tareas
 
-Celery Worker administra la ejecución de tareas de forma asincrónica entre los "trabajadores" (*worker*) disponibles. Un "trabajador" puede ser simplemente un núcleo de la computadora local que está libre para ejecutar una tarea o puede ser un servidor remoto en una configuración más compleja, por ejemplo.
+**Celery Worker** administra la ejecución de tareas de forma *asincrónica* entre los "trabajadores" (*workers*) disponibles. Un "trabajador" puede ser simplemente un núcleo de la computadora local que está libre para ejecutar una tarea o puede ser un servidor remoto en una configuración más compleja, por ejemplo.
 
 "Asincrónico" significa que las tareas no bloquean unas a otras. Por ejemplo: en un flujo "sincrónico" de tareas, una tarea es ejecutada solamente hasta que la anterior haya sido terminada. En el contexto de un administrador de tareas como Celery Worker, un flujo de tareas asincrónico permite que múltiples tareas sean ejecutadas en paralelo, sin esperar a que las tareas anteriores estén completas. Celery Worker estará a cargo de "vigilar" la cola de ejecución de las tareas y reportar sus resultados.
 
 #### Planificador de tareas
 
-Con Celery Beat podemos definir los momentos en que las tareas son ejecutadas. Esto es útil para crear tareas periódicas, en un periodo de tiempo definido como "cada 15 segundos" o "cada 12 horas" o "todos los días a las 2:00 am" o "el segundo miércoles de cada mes", e inclusive con base en eventos solares, como "al amanecer" o "al mediodía" (que varía según la ubicación en el planeta y la época del año).
+**Celery Beat** define los momentos en que las tareas son ejecutadas, es decir, es un "calendarizador" o "planificador" (*scheduler*). Esto es útil para crear tareas en un periodo de tiempo definido como, por ejemplo, "cada 15 segundos" o "cada 12 horas" o "todos los días a las 2:00 am" o "el segundo miércoles de cada mes", e inclusive con base en eventos solares, como "al amanecer" o "al mediodía" (que varía según la ubicación en el planeta y la época del año).
 
 #### Intermediador de mensajes
 
@@ -107,7 +107,7 @@ Cuando es necesaria la comunicación entre procesos en una computadora, es neces
 
 [Redis](https://redis.io/) es un intermediador de mensajes popular que permite varios modelos de comunicación, como publicación/suscripción. 
 
-Redis tiene integración con Celery, y es necesario para el envío de la asignación de las tareas periódicas.
+Redis tiene integración con Celery, y es necesario para el envío de la asignación de las tareas periódicas desde el planificador (Celery Beat) hasta el trabajador (Celery Worker).
 
 ### Bases de datos e interfaces ORM
 
@@ -115,7 +115,7 @@ El uso de bases de datos es un área compleja y especializada, sin embargo, hay 
 
 En particular, la recomendación es utilizar un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), que representa las tablas y sus datos como una *clase* en un lenguaje de programación, habilitando la interacción con la base de datos con el paradigma orientado a objetos, y abstrayendo la especificidad de distintas bases de datos utilizadas.
 
-En Python existe SQLAlchemy, un poderoso paquete para interactuar con los DBMS más populares.
+En Python existe [SQLAlchemy](https://www.sqlalchemy.org/), un poderoso paquete para interactuar con los DBMS más populares.
 
 El ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma.
 
@@ -151,14 +151,14 @@ class Matricula(Base):
     curso_id = Column(String, ForeignKey("cursos.curso_id"), primary_key=True)
     ciclo = Column(Integer, primary_key=True)
 
-    # Define the relationship to Estudiante and Curso
+    # Definir relación de matrícula con los modelos de estudiante y curso
     estudiante = relationship("Estudiante")
     curso = relationship("Curso")
 ```
 
 Aquí fueron creadas las tres tablas, donde `matriculas` hace referencia por medio de llaves foráneas a las llaves primarias `estudiantes.estudiante_id` y `cursos.curso_id`. En esta misma tabla nótese también que las tres columnas tienen `primary_key=True`, lo que indica una *llave primaria compuesta*, para lo cual cada registro debe tener una *combinación única* de estudiante, curso y ciclo lectivo.
 
-Finalmente, hay que crear las tablas estableciendo un `engine` o referencia a la base de datos a utilizar (en este caso SQLite3) y crear una sesión ligada a ese `engine`, para poder ejectuar las transacciones deseadas.
+Finalmente, hay que crear las tablas estableciendo un `engine` o referencia a la base de datos a utilizar (en este caso SQLite3) y crear una *sesión* ligada a ese `engine`, para poder ejectuar las transacciones deseadas.
 
 ```python
 # Crear la conexión a la base de datos SQLite3

@@ -9,9 +9,9 @@ from models import session, TestData
 
 # Datos de configuración
 config = configparser.ConfigParser()
-config.read("pipeline.cfg")
+config.read("proyecto.cfg")
 url = config["api"]["url"]
-token = config["api"]["token"]
+grupo = config["api"]["grupo"]
 period = int(config["scheduler"]["period"])
 
 
@@ -22,21 +22,22 @@ app = Celery("tasks", broker="redis://localhost")
 # Configurar las tareas de Celery
 @app.task
 def test_task():
-    response = requests.get(url, headers={"X-Auth-Token": token})
-    sensor_data = json.loads(response.text)
-    for data in sensor_data:
-        timestamp = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S")
+    params = {"grupo": grupo}
+    response = requests.get(url, params=params)
+    datos = json.loads(response.text)
+    for dato in datos:
+        timestamp = datetime.strptime(dato["timestamp"], "%Y-%m-%d %H:%M:%S")
         if session.query(TestData).filter_by(timestamp=timestamp).first():
             continue
         else:
             record = TestData(
                 timestamp=timestamp,
-                pm10=data["sensordatavalues"][0]["value"],
-                pm25=data["sensordatavalues"][1]["value"],
-                latitude=data["location"]["latitude"],
-                longitude=data["location"]["longitude"],
-                altitude=data["location"]["altitude"],
-                country=data["location"]["country"],
+                pm10=dato["sensordatavalues"][0]["value"],
+                pm25=dato["sensordatavalues"][1]["value"],
+                latitude=dato["location"]["latitude"],
+                longitude=dato["location"]["longitude"],
+                altitude=dato["location"]["altitude"],
+                country=dato["location"]["country"],
             )
             session.add(record)
             session.commit()

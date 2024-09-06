@@ -5,9 +5,12 @@ import configparser
 
 # Datos de configuración
 config = configparser.ConfigParser()
-config.read("pipeline.cfg")
-system = config["db"]["system"]
-name = config["db"]["name"]
+config.read("proyecto.cfg")
+db = config["db"]["db"]
+if db == "sqlite":
+    system = config["db"]["sqlite"]
+elif db == "postgresql":
+    system = config["db"]["postgresql"]
 
 # Crear la clase base de la tabla
 Base = declarative_base()
@@ -28,7 +31,7 @@ class TestData(Base):
 
 
 # Crear la conexión a la base de datos SQLite3
-engine = create_engine(f"{system}:///{name}")
+engine = create_engine(system)
 Session = sessionmaker(bind=engine)
 session = Session()
 
