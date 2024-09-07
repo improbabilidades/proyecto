@@ -116,6 +116,24 @@ Para salir de la visualización, utilizar `Ctrl + C`, de otro modo dejar el proc
 
 ### Para ejecutar el proyecto
 
+- En el directorio raíz, crear un archivo `proyecto.cfg` con el siguiente contenido:
+
+```
+[api]
+url = https://kalouk.xyz/api/datos
+group = 000
+
+[db]
+db = sqlite
+sqlite = sqlite:///proyecto.db
+postgresql = postgresql://localhost:5432/proyecto
+
+[scheduler]
+period = 15
+```
+
+y modificar según las necesidades de su implementación. Es recomendable mantener un archivo de configuración con las variables separadas del código, para no *hard-codear*-las.
+
 - En una nueva terminal ejecutar el siguiente comando para activar **Redis** (más detalles en la documentación): 
 
 ```bash
@@ -132,7 +150,9 @@ Nota: en sistemas Linux usualmente ya está corriendo como *servicio del sistema
 celery --app tasks worker --loglevel=INFO
 ```
 
-dejar esta terminal "corriendo".
+dejar esta terminal "corriendo". 
+
+**Nota**: cada vez que haya cambios en `tasks.py` debe reiniciarse este proceso (Ctrl + C para detener).
 
 - En una nueva terminal ejecutar el siguiente comando para activar **Celery Beat** (más detalles en la documentación):
 
@@ -143,3 +163,15 @@ celery --app tasks beat --loglevel=INFO
 dejar esta terminal "corriendo".
 
 En este punto, ya el código de ejemplo debería estar importando y guardando datos en la base de datos, según está detallado en `models.py` y `tasks.py`.
+
+**Nota**: para hacer una sola prueba de la función (`@app.task`) y no activar Celery Beat, es posible utilizar en la terminal, en el mismo directorio que `tasks.py`:
+
+```bash
+$ python
+>>> from tasks import test_task
+>>> url = "https://kalouk.xyz/api/datos"
+>>> group = "000"
+>>> test_task.delay(url, group)
+```
+
+Es decir, utilizar Python para importar la función `test_task` (o la función de su proyecto) y ejecutar el método `.delay()` para ejecución sincrónica ("en el momento").

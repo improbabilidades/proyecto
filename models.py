@@ -1,7 +1,12 @@
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 import configparser
+
+
+# Crear la clase base de la tabla
+class Base(DeclarativeBase):
+    pass
+
 
 # Datos de configuración
 config = configparser.ConfigParser()
@@ -12,25 +17,20 @@ if db == "sqlite":
 elif db == "postgresql":
     system = config["db"]["postgresql"]
 
-# Crear la clase base de la tabla
-Base = declarative_base()
-
 
 # Definir los modelos
 class TestData(Base):
     __tablename__ = "test_data"
 
     id = Column(Integer, primary_key=True)
+    group = Column(String)
     timestamp = Column(DateTime)
-    pm10 = Column(Float)
-    pm25 = Column(Float)
-    latitude = Column(Float)
-    longitude = Column(Float)
-    altitude = Column(Float)
-    country = Column(String)
+    variable_1 = Column(Integer)
+    variable_2 = Column(Float)
+    variable_3 = Column(String)
 
 
-# Crear la conexión a la base de datos SQLite3
+# Crear la conexión a la base de datos SQLite3 o PostgreSQL
 engine = create_engine(system)
 Session = sessionmaker(bind=engine)
 session = Session()
