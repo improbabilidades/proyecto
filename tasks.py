@@ -57,7 +57,7 @@ def test_task(url, group):
 
 @app.task
 def schedule_task():
-    return "¡Hola mundo cada 60 minutos!"
+    return "¡Hola gente cada 60 minutos!"
 
 
 # ----------
