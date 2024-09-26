@@ -2,7 +2,7 @@
 
 El análisis de datos comienza con la *recopilación* de datos. Podríamos separar la recopilación en dos grandes paradigmas:
 
-- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones, que son actualizados aproximadamente cada 24 horas pero que contienen millones de nuevas interacciones.
+- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones que, aunque son actualizados aproximadamente cada 24 horas, contienen millones de nuevas interacciones.
 - **Procesamiento en tiempo real** (*real-time processing*): consiste en la recolección de datos al momento de su ocurrencia, esto es, basado en eventos (*event-driven*) o con una frecuencia de recopilación tan alta que solamente algunos pocos nuevos datos, o ninguno, son obtenidos en cada muestreo. Ejemplos: datos sobre terremotos, mercados de valores o de redes de sensores recopilados cada 10 segundos.
 
 En medio de ambos hay una "zona gris" a menudo llamada **procesamiento en tiempo casi real** (*quasi real-time processing*) que captura la dinámica del sistema sin responder directamente a eventos o a una altísima frecuencia. Ejemplos: telemetría y rastreo en vehículos de transporte público, que actualizan datos cada 15 o 20 segundos, lo suficiente para tener una buena estimación de su posición, pero no totalmente "en tiempo real".
@@ -10,50 +10,54 @@ En medio de ambos hay una "zona gris" a menudo llamada **procesamiento en tiempo
 La definición varía según el fenómeno analizado, que puede tener cambios muy frecuentes o no.
 
 !!! note "Definición informal de procesamiento en tiempo real" 
-    Un flujo de datos en el cual el procesamiento de una nueva muestra es iniciado en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento es un procesamiento en tiempo real.
+    Un flujo de datos en el cual el procesamiento de una nueva muestra inicia en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento es un procesamiento en tiempo real.
 
 ### ¿Y de dónde vienen estos datos?
 
-A veces de un solo archivo (ejemplo, un `.xlsx` o `.csv`), a veces directamente de un sensor (ejemplo, un Arduino con un sensor de temperatura conectado a nuestra computadora), a veces de una base de datos externa, siguiendo varios *modelos de comunicación* posibles.
+Los datos pueden venir de un solo archivo (ejemplo, un `.xlsx` o `.csv`), directamente de un sensor (ejemplo, un Arduino con un sensor de temperatura conectado a la computadora), o de una base de datos externa, siguiendo varios *modelos de comunicación* posibles, explicados a continuación.
 
 #### Modelos de comunicación
 
 Algunos de los modelos de comunicación para compartir datos entre sistemas son:
 
-- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* de un *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (404 Not Found) o las interfaces de programación de aplicaciones web (API, *Application Programming Interface*) que operan sobre HTTP y conectan distintos servicios. 
-- **Publicación/suscripción**: donde un *productor* *publica* un *mensaje* que coloca en un *canal* sobre un *tópico* y un *intermediador de mensajes* lo distribuye a todos los procesos que estén *suscritos*. Ejemplo: el monitoreo de eventos en la agricultura de precisión en una red de sensores conectada con [MQTT](https://mqtt.org/). 
-- **WebSockets**: donde hay un canal *permanente* de comunicación *bidireccional*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea. HTTP, en cambio, es una conexión no persistente.
+- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* de un *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (el famoso "404 Not Found") o las interfaces de programación de aplicaciones web (API, *Application Programming Interface*) que operan sobre HTTP y conectan distintos servicios. 
+- **Publicación/suscripción**: donde un *productor* *publica* un *mensaje* que coloca en un *canal* sobre un *tópico* y un *intermediador de mensajes* lo distribuye a todos los procesos que están *suscritos*. Ejemplo: el monitoreo de eventos en la agricultura de precisión con una red de sensores conectada con [MQTT](https://mqtt.org/). 
+- **WebSockets**: donde hay un canal de comunicación *bidireccional* con comunicación *persistente*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea. A diferencia de los WebSockets, HTTP es una conexión no persistente.
 - Otros
 
-Una de las soluciones más populares es obtener datos de fuentes externas, y hacerlo por medio de una interfaz de programación de aplicaciones (API).
+Una de las soluciones más populares es obtener datos de fuentes externas, y hacerlo por medio de una interfaz de programación de aplicaciones (API). Ver sección más adelante.
 
 ### ¿Dónde son almacenados los datos?
 
 Luego, el análisis de datos típicamente continúa con el almacenamiento de datos después de la recopilación. Las bases de datos ofrecen almacenamiento permanente y son una solución en el caso de grandes cantidades de datos.
 
-Nota: no siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego descartarlos.
+**Nota**: no siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego descartarlos.
 
-Hay distintos tipos de bases de datos, donde las bases de datos relacionales son las más comunes.
+Hay distintos tipos de bases de datos y las bases de datos relacionales son las más comunes.
 
 #### Bases de datos relacionales
 
 Son datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están relacionadas entre sí (de ahí el nombre *relacional*) con *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
 
-En el siguiente *diagrama entidad-relación* (ERD) simplificado, una tabla tiene tres columnas con datos de estudiantes, otra tabla tiene datos de los cursos y una tercera tabla que vincula cursos con estudiantes (relación muchos-a-muchos, *many-to-many*) con llaves foráneas a las dos tablas anteriores.
+En el siguiente *diagrama entidad-relación* (ERD) simplificado, una tabla tiene datos de estudiantes, otra tabla tiene datos de los cursos y una tercera tabla que vincula cursos con estudiantes (relación muchos-a-muchos, *many-to-many*) con llaves foráneas a las dos tablas anteriores.
 
 ```mermaid
+---
+title: Ejemplo de base de datos
+---
 erDiagram
-    ESTUDIANTE ||--o{ MATRICULA : matricula
+    ESTUDIANTE }o--o{ MATRICULA : matricula
     ESTUDIANTE {
         string estudiante_id PK
         string nombre
         int edad
+        float promedio
     }
     CURSO {
         string curso_id PK
         string nombre
     }
-    MATRICULA ||--o{ CURSO : matricula
+    MATRICULA }o--o{ CURSO : matricula
     MATRICULA {
         string estudiante_id FK
         string curso_id FK
@@ -61,15 +65,15 @@ erDiagram
     }
 ```
 
-Las bases de datos relacionales más conocidas son tipo SQL (*Structured Query Language*), que utilizan un lenguaje especial para hacer consultas a la base de datos. Por ejemplo:
+Las bases de datos relacionales más utilizadas son tipo SQL (*Structured Query Language*), que utilizan un lenguaje especial para hacer consultas a la base de datos. Por ejemplo:
 
 ```sql
 SELECT nombre, edad FROM estudiantes WHERE id = B00000;
 ```
 
-devuelve los datos `nombre` y `edad` del carné B00000 en la tabla `estudiantes`.
+devuelve los datos `nombre` y `edad` (pero no `promedio`) del carné B00000 en la tabla `estudiantes`.
 
-En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros (CRUD, *Create, Read, Update, Delete*).
+En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros (CRUD, *Create*, *Read*, *Update*, *Delete*).
 
 Los sistemas de administración de bases de datos (DBMS, *Data Base Management System*) más populares son PostgreSQL, SQLite3, MySQL, MariaDB, Oracle y otros.
 
@@ -119,8 +123,8 @@ En Python existe [SQLAlchemy](https://www.sqlalchemy.org/), un poderoso paquete 
 
 El ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma.
 
-```python
-from sqlalchemy import create_engine, Column, ForeignKey, Integer, String
+```python title="Definición de modelos de la base de datos"
+from sqlalchemy import create_engine, Column, ForeignKey, Integer, Float, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -135,6 +139,7 @@ class Estudiante(Base):
     estudiante_id = Column(String, primary_key=True)
     nombre = Column(String)
     edad = Column(Integer)
+    promedio = Column(Float)
 
 
 class Curso(Base):

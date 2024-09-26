@@ -2,23 +2,22 @@
 
 Esta es la documentación del proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas.
 
-Los objetivos están a continuación en esta página, mientras que una introducción a los temas de recopilación, procesamiento y modelado de datos están en páginas aparte. Finalmente están las instrucciones específicas del proyecto.
+Los objetivos están en esta página mientras que una introducción a los temas de recopilación, procesamiento y modelado de datos están en páginas aparte. Finalmente están las instrucciones específicas del proyecto.
 
-## Objetivo general
+## Objetivos
 
-Implementar una canalización (*pipeline*) en tiempo real para procesamiento y análisis de datos a partir de una fuente de datos externa, utilizando las herramientas computacionales de Python.
+!!! note "Objetivo general"
+    Implementar una canalización de datos (*pipeline*) en tiempo real para procesamiento y análisis a partir de una fuente de datos externa, utilizando las herramientas computacionales de Python.
 
-## Objetivos específicos
-
-### Objetivos de *programación*
+### Objetivos específicos de *programación*
 
 1. Configurar tareas periódicas
 2. Recopilar datos de un API web
-3. Procesar datos tipo JSON
-4. Utilizar bases de datos
+3. Procesar datos en formato JSON
+4. Utilizar bases de datos SQL
 5. Documentar resultados 
 
-### Objetivos de *estadística y probabilidad*
+### Objetivos específicos de *estadística y probabilidad*
 
 1. Realizar análisis exploratorios de datos con estadística descriptiva (media, varianza, etc.)
 2. Determinar modelos de probabilidad y sus parámetros
@@ -26,7 +25,7 @@ Implementar una canalización (*pipeline*) en tiempo real para procesamiento y a
 4. Encontrar una expresión analítica para una transformación de variables aleatorias
 5. Comparar los datos de la variable transformada con el modelo analítico
 
-### Objetivos de *aplicación*
+### Objetivos específicos de *aplicación*
 
 4. Explorar fuentes de datos en tiempo real para su recopilación y análisis.
 5. Utilizar interfaces de programación de aplicaciones (API) de forma programática para obtener datos de fuentes externas.
@@ -46,3 +45,6 @@ En el archivo `mkdocs.yml` está la configuración básica de esta documentació
 En la carpeta `img/` pueden colocar imágenes como gráficas y similares.
 
 Pueden agregar la estructura de archivos y carpetas que sea necesaria.
+
+!!! warning "Contenidos de la documentación del proyecto"
+    Para la documentación de su proyecto, deben eliminar los textos del enunciado y solamente agregar la explicación propia de su trabajo. Eso incluye esta sección y las de recopilación, procesamiento y otras.

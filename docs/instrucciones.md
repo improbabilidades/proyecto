@@ -26,14 +26,17 @@ Esto devolverá un conjunto de datos con un formato por determinar. Con la recop
 
 En la documentación web deben presentar:
 
-1. Presentación de los datos (1%)
-    - Detalle del contexto de los datos (sean datos ambientales, de finanzas, etc.)
-    - Descripción detallada del significado de cada dato, sus unidades, y cualquier otra información relevante
-2. Modelos de la base de datos (`models.py`) (1%)
-3. Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos (1%)
-4. Estadística descriptiva de los datos
-    - Gráficas descriptivas (1%)
-    - Modelos de probabilidad para los datos donde aplica (1%)
+1. (1%) Modelos de la base de datos (`models.py`) y tareas de recolección de datos (`tasks.py`) 
+3. (1%) Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos 
+4. Análisis exploratorio de los datos
+    - (1%) Gráficas descriptivas de `variable_1` y `variable_2` (histogramas y otros, si aplica) 
+    - (1%) Modelos de probabilidad para los datos donde aplica y gráfica sobre el histograma de los datos 
+    - (1%) Momentos de los modelos (promedio, varianza, desviación estándar, inclinación, kurtosis) 
+
+**Notas**
+- Todo el código debe cumplir con PEP 8 y será evaluado usando, por ejemplo, `$ flake8 tasks.py`.
+- El desarrollo debe estar ampliamente comentado.
+- La buena ortografía y gramática son esenciales.
 
 ### Presentación del reporte final
 
