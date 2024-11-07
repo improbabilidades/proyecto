@@ -22,7 +22,7 @@ Esto devolverá un conjunto de datos con un formato por determinar. Con la recop
 
 ### Presentación de avance
 
-**Valor: 5%**
+***Valor: 5%***
 
 En la documentación web deben presentar:
 
@@ -34,20 +34,48 @@ En la documentación web deben presentar:
     - (1%) Momentos de los modelos (promedio, varianza, desviación estándar, inclinación, kurtosis) 
 
 **Notas**
+
 - Todo el código debe cumplir con PEP 8 y será evaluado usando, por ejemplo, `$ flake8 tasks.py`.
 - El desarrollo debe estar ampliamente comentado.
 - La buena ortografía y gramática son esenciales.
 
 ### Presentación del reporte final
 
-**Valor: 15%**
+***Valor: 15%***
 
-En formato por definir, cada equipo presenta:
+Los datos recopilados representan una secuencia aleatoria, por cuanto son una sucesión de variables muestreadas en instantes discretos de tiempo, indexados por una marca temporal. En este sentido, es necesario hacer un análisis de procesos aleatorios a los datos recopilados.
 
-1. Documentación completa (5%)
-    - Todo lo del avance, mejorado si es el caso
-    - Especificación de la pregunta de investigación
-2. Respuesta a la pregunta de investigación (5%)
-    - Modelado de los datos obtenidos
-    - Resultados estadísticos (correlaciones, etc.)
-3. Análisis y conclusiones (5%)
+Algunos elementos por determinar son:
+
+- Función de densidad de probabilidad
+- Estacionaridad en sentido amplio
+- Promedios temporales de funciones muestra
+- Ergodicidad
+- Funciones de correlación y covarianza
+- Potencia promedio
+- Densidad espectral de potencia
+- Análisis de ruido
+
+Cada grupo hará solicitudes en este *endpoint* con el parámetro `proceso`. Si un grupo es, por ejemplo, el 000, entonces la solicitud de datos es:
+
+```http
+GET https://kalouk.xyz/api/proceso?grupo=000
+```
+
+Esto devolverá un conjunto de datos con un formato por determinar. Con la recopilación de estos datos inicia el proyecto.
+
+Las asignaciones son:
+
+1. (1%) Nueva recopilación de datos por 24 horas (con gráficas u otros elementos probatorios)
+2. (4%) Determinación de la función de densidad de probabilidad
+3. (4%) Determinación de la estacionaridad en sentido amplio y ergodicidad
+5. (3%) Determinación de la potencia promedio
+6. (2%) Análisis de resultados y conclusiones
+7. (1%) Documentación apropiada
+
+Todo esto debe ser presentado en la documentación tal y como en el avance del proyecto, siguiendo las mismas normas de PEP 8, ortografía, etc.
+
+**Consejos**
+
+- Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar la función de densidad de probabilidad del punto 1., `wss.py` para la estacionaridad en sentido amplio, etc.
+- Lo anterior es recomendable también para "aislar" el trabajo en diferentes archivos cuando varias personas están trabajando en un mismo proyecto en Git, para así editar de forma paralela.
