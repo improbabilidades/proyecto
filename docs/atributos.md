@@ -4,7 +4,7 @@
 
 Utilización de herramientas modernas de ingeniería: utiliza herramientas modernas y pertinentes para las diferentes fases de desarrollo de un proyecto.
 
-### Recopilación de datos
+### (A) Recopilación de datos
 
 Utiliza herramientas computacionales para obtener datos masivos a partir de fuentes diversas, incluyendo archivos locales o bases de datos y otras fuentes externas como servidores remotos y APIs. El planteamiento del proyecto incluye distintas fuentes de datos para análisis. Herramientas típicas incluyen paquetes de Python como “requests” para extraer datos de APIs o SQLAlchemy para interactuar con bases de datos.
 
@@ -13,7 +13,7 @@ Utiliza herramientas computacionales para obtener datos masivos a partir de fuen
 - Marginal: La implementación es capaz de obtener datos de algunas fuentes, solamente.
 - Por debajo de las expectativas: La implementación no es capaz de obtener datos de ninguna de las fuentes indicadas.
 
-### Procesamiento de datos
+### (B) Procesamiento de datos
 
 Utiliza herramientas computacionales para limpieza y filtrado de datos masivos y utiliza conocimientos estadísticos como criterio para selección y eliminación de datos espurios o aberrantes. La mayor parte de datos reales contienen este tipo de datos. El planteamiento del proyecto incluye fuentes de datos reales. Herramientas típicas incluyen paquetes de Python como Pandas para ordenamiento de los datos.
 
@@ -22,7 +22,7 @@ Utiliza herramientas computacionales para limpieza y filtrado de datos masivos y
 - Marginal: La implementación omite alguna de las tareas de limpieza de datos o de análisis estadístico descriptivo de los datos recopilados o del despliegue de los resultados.
 - Por debajo de las expectativas: La implementación no hace ni una limpieza de datos ni un análisis estadístico descriptivo de los datos recopilados.
 
-### Visualización de datos
+### (C) Visualización de datos
 
 Utiliza herramientas computacionales para crear gráficas relevantes de datos masivos. Herramientas típicas incluyen paquetes de Python como Matplotlib, Seaborn o Plotly para gráficos bidimensionales y tridimensionales, con una gran cantidad de opciones de configuración.
 
@@ -35,7 +35,7 @@ Utiliza herramientas computacionales para crear gráficas relevantes de datos ma
 
 Utilización de herramientas modernas de ingeniería: utiliza nuevas técnicas, herramientas o aplicaciones según las necesidades y oportunidades que presenta el desarrollo de un proyecto.
 
-### Solución funcional
+### (A) Solución funcional
 
 Resuelve el problema con scripts de programación
 
@@ -44,7 +44,7 @@ Resuelve el problema con scripts de programación
 - Marginal: Uno o más de los resultados con datos de prueba están incorrectos.
 - Por debajo de las expectativas: El programa no devuelve una respuesta.
 
-### Convenciones
+### (B) Convenciones
 
 Se adhiere a las convenciones de escritura de código.
    
@@ -53,7 +53,7 @@ Se adhiere a las convenciones de escritura de código.
 - Marginal: La revisión automática del código reporta menos de diez errores en las convenciones de sintaxis del código.
 - Por debajo de las expectativas: La revisión automática del código reporta más de diez errores en las convenciones de sintaxis del código.
 
-### Documentación
+### (C) Documentación
 
 Documenta la funcionalidad del paquete desarrollado.
    
@@ -62,7 +62,7 @@ Documenta la funcionalidad del paquete desarrollado.
 - Marginal: La documentación está completa, pero presenta errores de escritura (ortografía, gramática).
 - Por debajo de las expectativas: La documentación está incompleta.
 
-### Herramientas
+### (D) Herramientas
 
 Utiliza las herramientas de software indicadas para el proyecto.
 
@@ -72,7 +72,7 @@ Utiliza las herramientas de software indicadas para el proyecto.
 - Por debajo de las expectativas: No siguió las especificaciones de uso del lenguaje y sus herramientas y no puede desarrollar y ejecutar código.
 
 
-### Paquete
+### (E) Paquete
 
 Desarrolla una solución para un problema y entrega un paquete de Python desarrollado en el semestre.
 
@@ -85,7 +85,7 @@ Desarrolla una solución para un problema y entrega un paquete de Python desarro
 
 Trabajo individual y en equipo: Desempeña el rol de trabajo de acuerdo con las expectativas establecidas por el equipo y las demandas propias del trabajo o proyecto.
 
-### Presentación
+### (A) Presentación
 
 Explica apropiadamente el aporte de su trabajo dentro del proyecto.
 
@@ -94,7 +94,7 @@ Explica apropiadamente el aporte de su trabajo dentro del proyecto.
 - Marginal: Presenta de forma deficiente los resultados de su trabajo o no lo hace en conexión con el proyecto global.
 - Por debajo de las expectativas: No presenta apropiadamente los resultados de su trabajo.
 
-### Desarrollo colaborativo
+### (B) Desarrollo colaborativo
 
 Utiliza las herramientas apropiadas para el desarrollo colaborativo de software, en este caso Git y GitHub o repositorio remoto similar.
 
