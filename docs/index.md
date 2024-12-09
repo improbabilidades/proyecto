@@ -1,5 +1,11 @@
 # Proyecto de programación
 
+!!! warning "Pendientes"
+    - Ecuaciones matemáticas
+    - Ejemplos de gráficas bien rotuladas
+    - "Siguiente" y "anterior" en pie de página
+    - Ofrecer estructura de presentación de resultados
+
 Esta es la documentación del proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas.
 
 Los objetivos están en esta página mientras que una introducción a los temas de recopilación, procesamiento y modelado de datos están en páginas aparte. Finalmente están las instrucciones específicas del proyecto.

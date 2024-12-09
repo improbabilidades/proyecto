@@ -79,3 +79,11 @@ Todo esto debe ser presentado en la documentación tal y como en el avance del p
 
 - Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar la función de densidad de probabilidad del punto 1., `wss.py` para la estacionaridad en sentido amplio, etc.
 - Lo anterior es recomendable también para "aislar" el trabajo en diferentes archivos cuando varias personas están trabajando en un mismo proyecto en Git, para así editar de forma paralela.
+
+### Ejemplo de ecuaciones matemáticas
+
+Sea $X$ una variable aleatoria con:
+
+$$
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
