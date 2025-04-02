@@ -9,17 +9,17 @@ Los archivos incluidos en el repositorio original son:
 
 ## Documentación e instrucciones del proyecto
 
-Las intrucciones del proyecto están disponibles en la página:
+Las instrucciones del proyecto están disponibles en la página:
 
 [https://mpss-eie.github.io/proyecto](https://mpss-eie.github.io/proyecto)
 
 ## Instrucciones para ejecución local
 
-Algunos de los paquetes y funcionalidades del proyecto solamente operan en los sistemas operativos tipo Unix, como Linux y macOS.
+Algunos de los paquetes y funcionalidades del proyecto solamente corren en los sistemas operativos tipo Unix, como Linux y macOS.
 
-Por esta razón, las personas con Windows deben utilizar WSL (*Windows Subsystem for Linux*).
+Por esta razón, las personas con Windows deben utilizar el WSL (*Windows Subsystem for Linux*) de Microsoft (o solución equivalente).
 
-Las [instrucciones de instalación](https://learn.microsoft.com/es-mx/windows/wsl/install) indican que solamente es necesario la siguiente instrucción en la terminal, que instala Ubuntu por defecto:
+Las [instrucciones de instalación](https://learn.microsoft.com/es-mx/windows/wsl/install) indican que solamente es necesario la siguiente instrucción en la terminal, la cual instala la distribución Ubuntu, por defecto:
 
 ```bash
 wsl --install
@@ -31,7 +31,7 @@ Una vez en la terminal (o consola o interfaz de línea de comandos) en Linux en 
 adduser <username>
 ```
 
-donde `<username>` puede ser, por ejemplo, `bayes` o `laplace` o `markov` o un nombre de su preferencia, y luego
+donde `<username>` puede ser, por ejemplo, `bayes` o `laplace` o `markov` o un nombre de su preferencia (`funkytomato`), y luego ingresar
 
 ```bash
 usermod -aG sudo <username>
@@ -43,17 +43,17 @@ para actualizar los permisos. Para cambiar de usuario `root` a `<username>` y em
 su <username>
 ```
 
-También es recomendado utilizar la [Terminal Windows](https://learn.microsoft.com/es-es/windows/terminal/install), que ofrece mejores herramientas para manejar múltiples terminales, tanto en Windows como en el WSL. 
+También es recomendado utilizar la [Terminal Windows](https://learn.microsoft.com/es-es/windows/terminal/install), que ofrece mejores herramientas para manejar múltiples terminales, tanto en Windows como en el WSL. También [Warp](https://www.warp.dev/) es una terminal recomendada.
 
 Nótese que WSL no es ni una máquina virtual ni una configuración de arranque dual (*dual boot*), sino que opera nativamente en Windows. Además, los archivos de Windows están disponibles desde Linux y viceversa.
 
-Una vez instalado WSL, las instrucciones a partir de ahora aplican para una terminal Unix con `bash` o `zsh`, indicado con el símbolo *prompt* `$`.
+Una vez instalado WSL, las instrucciones a partir de ahora aplican para una terminal Unix con `bash` o `zsh`, indicado con el símbolo del *prompt* `$`.
 
 ### Clonar el repositorio
 
 Para comenzar, es necesario "clonar" el repositorio con sus archivos localmente. Para esto:
 
-- Asegurarse de que Git está instalado. Es posible probar con `$ git --version`.
+- Asegurarse de que Git está instalado. Es posible verificar con `$ git --version`.
 - Ubicarse en el directorio donde estará ubicado el proyecto, con `$ cd`.
 - Clonar el proyecto con `$ git clone https://github.com/mpss-eie/proyecto.git`.
 - Moverse al directorio del proyecto con `$ cd proyecto/`.
@@ -112,7 +112,7 @@ Abrir en un navegador web la página del "servidor local" en el puerto 8000, en 
 
 Cada cambio en los documentos de la carpeta `docs/` o en el archivo `mkdocs.yml` genera un refrescamiento de la página.
 
-Para salir de la visualización, utilizar `Ctrl + C`, de otro modo dejar el proceso corriendo mientras edita la documentación.
+Para salir de la visualización, utilizar `Ctrl + C`, o, de otro modo, dejar el proceso corriendo mientras edita la documentación.
 
 ### Para ejecutar el proyecto
 
@@ -132,9 +132,9 @@ postgresql = postgresql://localhost:5432/proyecto
 period = 15
 ```
 
-y modificar según las necesidades de su implementación. Es recomendable mantener un archivo de configuración con las variables separadas del código, para no *hard-codear*-las.
+y modificar según las necesidades de su implementación. Es recomendable mantener un archivo de configuración con las variables separadas del código, para no *hard-codear*-las. Notar que `proyecto.cfg` está en el archivo `.gitignore` y por tanto no estará incluido en los *commits*.
 
-- En una nueva terminal ejecutar el siguiente comando para activar **Redis** (más detalles en la documentación): 
+- En una nueva terminal ejecutar el siguiente comando para activar **Redis** (más detalles sobre Redis en la documentación): 
 
 ```bash
 redis-server
@@ -144,7 +144,7 @@ dejar esta terminal "corriendo".
 
 Nota: en sistemas Linux usualmente ya está corriendo como *servicio del sistema* y por tanto dará un error de que ya está ocupado el proceso. En ese caso es posible ignorar este paso.
 
-- En una nueva terminal ejecutar el siguiente comando para activar **Celery Worker** (más detalles en la documentación):
+- En una nueva terminal ejecutar el siguiente comando para activar **Celery Worker** (más detalles sobre Celery en la documentación):
 
 ```bash
 celery --app tasks worker --loglevel=INFO
@@ -154,7 +154,7 @@ dejar esta terminal "corriendo".
 
 **Nota**: cada vez que haya cambios en `tasks.py` debe reiniciarse este proceso (Ctrl + C para detener).
 
-- En una nueva terminal ejecutar el siguiente comando para activar **Celery Beat** (más detalles en la documentación):
+- En una nueva terminal ejecutar el siguiente comando para activar **Celery Beat** (más detalles sobre Celery Beat en la documentación):
 
 ```bash
 celery --app tasks beat --loglevel=INFO
@@ -174,4 +174,4 @@ $ python
 >>> test_task.delay(url, group)
 ```
 
-Es decir, utilizar Python para importar la función `test_task` (o la función de su proyecto) y ejecutar el método `.delay()` para ejecución sincrónica ("en el momento").
+Es decir, utilizar Python para importar la función `test_task` (o la función creada para su proyecto) y ejecutar el método `.delay()` para ejecución sincrónica ("en el momento").

@@ -4,7 +4,7 @@ nav:
   - Inicio: index.md
   - Recopilación: recopilacion.md
   - Procesamiento: procesamiento.md
-  - Modelos: modelos.md
+  - Modelado: modelos.md
   - Instrucciones: instrucciones.md
   - Atributos: atributos.md
 
@@ -19,6 +19,7 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.footer
     - toc.integrate
     - content.tooltips
     - content.code.copy
@@ -51,3 +52,6 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  generator: false
