@@ -3,6 +3,7 @@ site_name: Proyecto de Programación de Modelos Probabilísticos
 nav:
   - Inicio: index.md
   - Recopilación: recopilacion.md
+  - Almacenamiento: almacenamiento.md
   - Procesamiento: procesamiento.md
   - Modelado: modelos.md
   - Instrucciones: instrucciones.md
