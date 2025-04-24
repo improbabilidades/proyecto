@@ -4,8 +4,8 @@ nav:
   - Inicio: index.md
   - Recopilación: recopilacion.md
   - Almacenamiento: almacenamiento.md
-  - Procesamiento: procesamiento.md
-  - Modelado: modelos.md
+  - Exploración: exploracion.md
+  - Modelado: modelado.md
   - Instrucciones: instrucciones.md
   - Atributos: atributos.md
 

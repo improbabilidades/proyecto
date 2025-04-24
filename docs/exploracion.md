@@ -1,4 +1,6 @@
-# Procesamiento de datos
+# Análisis exploratorio de datos
+
+El análisis exploratorio de datos (EDA, *Exploratoy Data Analysis*).
 
 ## Procesamiento y análisis descriptivo con Pandas
 
@@ -18,5 +20,11 @@ En el `PyX` número 3 [Py3](https://github.com/fabianabarca/python) hay una disc
 
 Matplotlib es popular y poderoso, pero no es la única opción de graficación en Python. Otras opciones populares y con buena documentación son:
 
-- [Seaborn](https://seaborn.pydata.org/): basada en Matplotlib pero enfocada en gráficos estadísticos
-- [Plotly](https://plotly.com/): sintaxis amigable y disponible para varios lenguajes
+- [Seaborn](https://seaborn.pydata.org/): basada en Matplotlib pero enfocada en gráficos estadísticos.
+- [Plotly](https://plotly.com/): sintaxis amigable y disponible para varios lenguajes.
+
+```python
+import matplotlib.pyplot as plt
+```
+
+![Histograma](images/histograma.svg)

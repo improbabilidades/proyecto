@@ -2,42 +2,66 @@
 
 El análisis de datos comienza con la *recopilación* de datos. Podríamos separar la recopilación en dos grandes paradigmas:
 
-- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones que, aunque son actualizados aproximadamente cada 24 horas, contienen millones de nuevas interacciones.
+- **Procesamiento por lotes** (*batch processing*): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones que, aunque son actualizados diariamente, contienen millones de nuevas interacciones.
 - **Procesamiento en tiempo real** (*real-time processing*): consiste en la recolección de datos al momento de su ocurrencia, esto es, basado en eventos (*event-driven*) o con una frecuencia de recopilación tan alta que solamente algunos pocos nuevos datos, o ninguno, son obtenidos en cada muestreo. Ejemplos: datos sobre terremotos, valores diarios de los mercados de valores o mediciones de redes de sensores recopiladas cada 10 segundos.
 
-En medio de ambos hay una "zona gris" a menudo llamada **procesamiento en tiempo casi real** (*quasi real-time processing*) que captura la dinámica del sistema sin responder directamente a eventos o a una altísima frecuencia. Ejemplos: telemetría y rastreo en vehículos de transporte público, que actualizan datos cada 15 o 20 segundos, lo suficiente para tener una buena estimación de su posición, pero no totalmente "en tiempo real".
+En medio de ambos hay una "zona gris", a menudo llamada **procesamiento en tiempo casi real** (*quasi real-time processing*), que captura la dinámica del sistema sin responder directamente a eventos o sin una alta frecuencia. Por ejemplo, la telemetría y rastreo en vehículos de transporte público actualiza datos cada 15 o 20 segundos, lo cual es suficiente para tener una buena estimación de su posición, pero no es totalmente "en tiempo real".
 
 La definición varía según el fenómeno analizado, que puede tener cambios muy frecuentes o no.
 
 !!! note "Definición informal de procesamiento en tiempo real" 
-    Un flujo de datos en el cual el procesamiento de una nueva muestra inicia en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento es un procesamiento en tiempo real.
+    Un flujo de datos en el cual el procesamiento de una nueva muestra inicia en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento.
 
-### ¿Y de dónde vienen estos datos?
+## Fuentes de datos
 
 Los datos pueden venir de un solo archivo (ejemplo, un `.xlsx` o `.csv`), directamente de un sensor (ejemplo, un Arduino con un sensor de temperatura conectado a la computadora), o de una base de datos externa, siguiendo varios *modelos de comunicación* posibles, explicados a continuación.
 
-#### Modelos de comunicación
+### Modelos de comunicación
 
 Algunos de los modelos de comunicación para compartir datos entre sistemas son:
 
-- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* de un *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (el famoso "404 Not Found") o las interfaces de programación de aplicaciones web (API, *Application Programming Interface*) que operan sobre HTTP y conectan distintos servicios. 
+- **Solicitud/respuesta**: donde una *solicitud* del *cliente* interactúa con los *recursos* de un *servidor* que devuelve una *respuesta*. Ejemplo: HTTP (el famoso "404 Not Found" es uno de los [códigos de estado de respuesta](https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Status) posibles) o las interfaces de programación de aplicaciones web (API, *Application Programming Interface*) que operan sobre HTTP y conectan distintos servicios de forma programática. 
 - **Publicación/suscripción**: donde un *productor* (*producer*) *publica* un *mensaje* que coloca en un *canal* sobre un *tópico* y un *intermediador de mensajes* (*message broker*) lo distribuye a todos los procesos que están *suscritos*. Ejemplo: el monitoreo de eventos en la agricultura de precisión con una red de sensores conectada con [MQTT](https://mqtt.org/). 
-- **WebSockets**: donde hay un canal de comunicación *bidireccional* con comunicación *persistente*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea. A diferencia de los WebSockets, HTTP es una conexión no persistente.
+- **WebSockets**: donde hay un canal de comunicación *bidireccional* con comunicación *persistente*. Ejemplo: cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea, en las que la acción de un cliente es reflejada en los otros. Por ejemplo: *Fulanito está escribiendo…* en un chat. HTTP es una conexión no persistente, a diferencia de los WebSockets.
 - **Otros**
 
 Una de las soluciones más populares es obtener datos de fuentes externas, y hacerlo por medio de un API o *interfaz de programación de aplicaciones* (ver sección más adelante).
 
-## ¿Qué haremos en el proyecto?
+### Datos desde fuentes externas con API
+
+En el **PyX** [número 6](https://github.com/fabianabarca/python) hay una amplia explicación sobre los web API y el uso del paquete `requests` de Python.
+
+Hay una gran cantidad de API públicos disponibles en [Public APIs](https://publicapis.dev/) para experimentar con la recolección de datos.
+
+El siguiente es un ejemplo con el API de GitHub, donde está disponible la información de la cuenta de las personas registradas.
+
+```python title="playground.ipynb"
+import requests
+
+# Usuario(a) de GitHub
+usuario = "fabianabarca"
+
+# Construir la URL
+api_url = "https://api.github.com/users/" + usuario
+
+# Hacer la solicitud GET y guardar un "Response" en la variable r
+r = requests.get(api_url)
+
+# Convertir la información obtenida en JSON
+datos = r.json()
+
+# Extraer y mostrar algún dato particular
+print("Compañía:", datos["company"])
+
+# Resultado
+# Compañía: Universidad de Costa Rica
+```
+
+## Recopilación de datos en el proyecto
 
 Para este proyecto haremos una recopilación de datos en **tiempo *casi* real** de fuentes externas con un **web API** y lo haremos de forma periódica, utilizando un administrador y planificador de tareas, para almacenarlos en una **base de datos relacional**.
 
 A continuación hay una ampliación de estos conceptos.
-
-### Datos desde fuentes externas con API
-
-En el **PyX** [número 6](https://github.com/fabianabarca/python) hay una explicación más amplia sobre los web API y el uso del paquete `requests` de Python.
-
-Hay una gran cantidad de API públicos disponibles en [Public APIs](https://publicapis.dev/) para experimentar con la recolección de datos.
 
 ### Recolección periódica de datos con un planificador de tareas
 
