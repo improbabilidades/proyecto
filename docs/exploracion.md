@@ -1,6 +1,6 @@
 # Análisis exploratorio de datos
 
-El análisis exploratorio de datos (EDA, *Exploratoy Data Analysis*) es un paso esencial en todo trabajo de ciencia e ingeniería de datos. Como su nombre sugiere, es una investigación de las características generales de los datos.
+El análisis exploratorio de datos (EDA, *Exploratoy Data Analysis*) es un paso esencial en todo trabajo de ciencia e ingeniería de datos. Como su nombre sugiere, es una investigación de las características generales de los datos y puede incluir una descripción cualitativa de los datos, estadística descriptiva y gráficos.
 
 Pandas es una opción popular para manipular los datos obtenidos.
 
@@ -10,19 +10,21 @@ En el `PyX` número 2 ([Py2](https://github.com/fabianabarca/python)) hay una am
 
 Aquí basta con decir que Pandas es el equivalente programático de Microsoft Office Excel y otros programas de ofimática de hojas de cálculo, como Google Spreadsheets y LibreOffice Calc.
 
-Esto en el sentido de que Pandas manipula datos *tabulares* (filas y columnas, y en ese sentido *planos*) por medio del objeto `DataFrame`, que sería equivalente a una pestaña u hoja de Excel. Sobre los datos en este `DataFrame` es posible hacer todo tipo de operaciones y aplicar todo tipo de funciones, al igual que en Excel. 
+Pandas manipula datos *tabulares* (filas y columnas, y en ese sentido *planos*) por medio del objeto `DataFrame`, que sería equivalente a una pestaña u hoja de Excel. Sobre los datos en este `DataFrame` es posible hacer todo tipo de operaciones y aplicar todo tipo de funciones, al igual que en Excel. 
 
-Un `DataFrame` tiene una apariencia como la siguiente:
+Un ejemplo de creación de un `DataFrame` es el siguiente:
 
 ```python
 import pandas as pd
 
-# Crear un DataFrame de ejemplo
+# Crear datos de ejemplo como un diccionario con listas
 data = {
     "Nombre": ["Andrés", "Brenda", "Carlos"],
     "Edad": [17, 21, 22],
     "Ciudad": ["Heredia", "Puntarenas", "Guanacaste"],
 }
+
+# Crear el objeto DataFrame
 df = pd.DataFrame(data)
 
 # Mostrar el DataFrame
@@ -54,7 +56,7 @@ En el `PyX` número 3 ([Py3](https://github.com/fabianabarca/python)) hay una di
 Matplotlib es popular y poderoso, pero no es la única opción de graficación en Python. Otras opciones populares y con buena documentación son:
 
 - [Seaborn](https://seaborn.pydata.org/): basada en Matplotlib pero enfocada en gráficos estadísticos.
-- [Plotly](https://plotly.com/): sintaxis amigable y disponible para varios lenguajes.
+- [Plotly](https://plotly.com/): sintaxis amigable y disponible para varios lenguajes de programación.
 
 A continuación hay algunas gráficas con cada una de estas herramientas.
 

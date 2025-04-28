@@ -4,13 +4,13 @@
 
 Implementar una canalización de datos (*pipeline*) en tiempo real para procesamiento y análisis a partir de una fuente de datos externa, utilizando las herramientas computacionales de Python.
 
-## Objetivos específicos de ***programación***
+## Objetivos específicos de ***estadística y probabilidad***
 
-1. Configurar tareas periódicas
-2. Recopilar datos de un API web
-3. Procesar datos en formato JSON
-4. Utilizar bases de datos SQL
-5. Documentar el desarrollo 
+1. Realizar análisis exploratorios de datos con estadística descriptiva
+2. Determinar modelos de probabilidad y sus parámetros
+3. Graficar datos y sus modelos de probabilidad
+4. Analizar transformaciones de variables aleatorias
+5. Analizar procesos aleatorios
 
 ## Objetivos específicos de ***aplicación***
 
@@ -21,11 +21,3 @@ Implementar una canalización de datos (*pipeline*) en tiempo real para procesam
 5.  Utilizar herramientas estadísticas de Python para hacer análisis estadístico descriptivo y modelado probabilístico de los datos recopilados.
 6. Graficar los datos recopilados y sus análisis para visualización y análisis preliminar.
 7. Crear documentación del proyecto en forma de página web para presentación al público en general.
-
-## Objetivos específicos de ***estadística y probabilidad***
-
-1. Realizar análisis exploratorios de datos con estadística descriptiva
-2. Determinar modelos de probabilidad y sus parámetros
-3. Graficar datos y sus modelos de probabilidad
-4. Analizar transformaciones de variables aleatorias
-5. Analizar procesos aleatorios

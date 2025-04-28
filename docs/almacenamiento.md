@@ -1,16 +1,14 @@
 # Almacenamiento de datos
 
-## Cómo almacenar datos
-
 Luego de la recopilación, el análisis de datos típicamente continúa con el almacenamiento de datos. Las bases de datos ofrecen almacenamiento permanente y son una solución en el caso de grandes cantidades de datos.
 
 **Nota**: No siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego desecharlos, o guardarlos en un archivo de hojas de cálculo (`.xlsx`, `.ods`, `.gsheet`, etc.), texto plano (`.csv`, `.txt`, etc.) u otros.
 
 Hay distintos tipos de bases de datos y las *bases de datos relacionales* son las más comunes.
 
-### Bases de datos relacionales
+## Bases de datos relacionales
 
-Las bases de datos relacionales almacenan datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están relacionadas entre sí (de ahí el nombre *relacional*) con *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
+Las bases de datos relacionales almacenan datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están relacionadas entre sí (de ahí el nombre *relacional*) por medio de *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
 
 En el siguiente *diagrama entidad-relación* (ERD) simplificado, una tabla tiene datos de estudiantes, otra tabla tiene datos de los cursos y una tercera tabla vincula cursos con estudiantes (relación muchos-a-muchos, *many-to-many*) con llaves foráneas a las dos tablas anteriores.
 
@@ -46,7 +44,7 @@ Las bases de datos relacionales más utilizadas son tipo SQL (*Structured Query 
 SELECT nombre, edad FROM estudiantes WHERE id = B00000;
 ```
 
-devuelve los datos `nombre` y `edad` (pero no `promedio`) del carné B00000 en la tabla `estudiantes`.
+devuelve los datos de `nombre` y `edad` (pero no `promedio`) del carné B00000 en la tabla `estudiantes`.
 
 Las consultas (*queries*) de SQL pueden ser complejas. Por ejemplo:
 
@@ -61,11 +59,19 @@ devuelve todos los datos de los estudiantes matriculados en el curso IE0405 en e
 
 En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros (CRUD, *Create*, *Read*, *Update*, *Delete*).
 
-Los sistemas de administración de bases de datos (DBMS, *Data Base Management System*) más populares son PostgreSQL, SQLite3, MySQL, MariaDB, Oracle y otros.
+Los sistemas de administración de bases de datos (DBMS, *Data Base Management System*) [más populares](https://survey.stackoverflow.co/2024/technology#1-databases) son PostgreSQL, MySQL, SQLite, MongoDB, Redis, MariaDB y otros.
 
-#### Mapeadores relacionales de objetos
+## Bases de datos e interfaces ORM
 
-Es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), una  técnica para "mapear" una tabla en un objeto y utilizar la programación orientada a objetos para manipular los datos. La misma búsqueda de estudiantes matriculados en un curso para un ciclo particular en el SQL de ejemplo anterior, ahora en Python con SQLAlchemy sería:
+Es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), una  técnica para "mapear" una **tabla** (y su esquema) en un **objeto** y utilizar la programación orientada a objetos para manipular los datos, y abstraer la especificidad de distintas bases de datos utilizadas. 
+
+El uso de bases de datos es un área compleja y especializada, sin embargo, hay herramientas en Python que facilitan su gestión.
+
+### SQLAlchemy
+
+En Python existe [SQLAlchemy](https://www.sqlalchemy.org/), un poderoso paquete para interactuar con los DBMS más populares.
+
+La misma búsqueda de estudiantes matriculados en un curso para un ciclo particular en el SQL de ejemplo anterior, ahora en Python y con SQLAlchemy sería:
 
 ```python
 students = session.query(Estudiante).join(Matricula).filter(
@@ -74,18 +80,7 @@ students = session.query(Estudiante).join(Matricula).filter(
 ).all()
 ```
 
-**Nota**: Ver [sección](#bases-de-datos-e-interfaces-orm) más adelante.
-
-
-## Bases de datos e interfaces ORM
-
-El uso de bases de datos es un área compleja y especializada, sin embargo, hay herramientas en Python que facilitan su gestión.
-
-En particular, la recomendación es utilizar un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), que representa las tablas y sus datos como una *clase* en un lenguaje de programación, habilitando la interacción con la base de datos con el paradigma orientado a objetos, y abstrayendo la especificidad de distintas bases de datos utilizadas.
-
-En Python existe [SQLAlchemy](https://www.sqlalchemy.org/), un poderoso paquete para interactuar con los DBMS más populares.
-
-El ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma.
+En general, el ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma:
 
 ```python title="Definición de modelos de la base de datos"
 from sqlalchemy import create_engine, Column, ForeignKey, Integer, Float, String
@@ -139,7 +134,12 @@ session = Session()
 Base.metadata.create_all(engine)
 ```
 
-!!! warning "Migraciones"
-    En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias en el caso, completamente usual, en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` hay que hacer una migración. [Alembic](https://alembic.sqlalchemy.org/en/latest/) es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.
+La ejecución del código anterior crea las tablas especificadas, pero sobreescribe cualquier base de datos existente y sus datos (ver [Migraciones](#migraciones)).
 
 Para el proyecto la recomendación es utilizar SQLite o PostgreSQL. Una diferencia básica entre ambos es que SQLite3 existe como un archivo binario (por ejemplo, `db.sqlite3` o `data.db`) mientras que PostgreSQL es un programa propiamente, instalado en la computadora o servidor. Para proyectos de gran escala PostgreSQL es recomendado, sin embargo SQLite3 tiene capacidad para manejar cientos de millones de datos, así que en nuestro proyecto no es un problema. Quizá hay que tener más cuidado de no borrar el archivo "de un dedazo".
+
+#### Migraciones
+
+En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias en el caso, completamente usual, en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` hay que hacer una migración. 
+
+[Alembic](https://alembic.sqlalchemy.org/en/latest/) es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.
