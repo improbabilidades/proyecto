@@ -26,24 +26,25 @@ Esto devolverá un conjunto de datos con un formato por determinar. Con la recop
 
 En la documentación web deben presentar:
 
-1. (1%) Modelos de la base de datos (`models.py`) y tareas de recolección de datos (`tasks.py`) 
-3. (1%) Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos 
+1. (2%) Modelos de la base de datos (`models.py`) y tareas de recolección de datos (`tasks.py`) 
+3. (2%) Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos 
 4. Análisis exploratorio de los datos
-    - (1%) Gráficas descriptivas de `variable_1` y `variable_2` (histogramas y otros, si aplica) 
-    - (1%) Modelos de probabilidad para los datos donde aplica y gráfica sobre el histograma de los datos 
-    - (1%) Momentos de los modelos (promedio, varianza, desviación estándar, inclinación, kurtosis) 
+    - (2%) Gráficas descriptivas de `variable_1` y `variable_2` (histogramas y otros, si aplica) 
+    - (2%) Modelos de probabilidad para los datos donde aplica y gráfica sobre el histograma de los datos 
+    - (2%) Momentos de los modelos (promedio, varianza, desviación estándar, inclinación, kurtosis) 
 
 **Notas**
 
 - Todo el código debe cumplir con PEP 8 y será evaluado usando, por ejemplo, `$ flake8 tasks.py`.
 - El desarrollo debe estar ampliamente comentado.
 - La buena ortografía y gramática son esenciales.
+- Ver página de [requisitos](requisitos.md) de las entregas.
 
 ### Presentación del reporte final
 
 ***Valor: 20%***
 
-Los datos recopilados representan una secuencia aleatoria, por cuanto son una sucesión de variables muestreadas en instantes discretos de tiempo, indexados por una marca temporal. En este sentido, es necesario hacer un análisis de procesos aleatorios a los datos recopilados.
+Los datos recopilados representan una secuencia aleatoria, por cuanto son una sucesión de variables muestreadas en instantes discretos de tiempo, indexados por una marca temporal. En este sentido, es necesario hacer un análisis de *procesos aleatorios* a los datos recopilados.
 
 Algunos elementos por determinar son:
 
@@ -67,15 +68,15 @@ Esto devolverá un conjunto de datos con un formato por determinar. Con la recop
 Las asignaciones son:
 
 1. (1%) Nueva recopilación de datos por 24 horas (con gráficas u otros elementos probatorios)
-2. (4%) Determinación de la función de densidad de probabilidad
-3. (4%) Determinación de la estacionaridad en sentido amplio y ergodicidad
-5. (3%) Determinación de la potencia promedio
-6. (2%) Análisis de resultados y conclusiones
-7. (1%) Documentación apropiada
+2. (5%) Determinación de la función de densidad de probabilidad
+3. (5%) Determinación de la estacionaridad en sentido amplio y ergodicidad
+5. (4%) Determinación de la potencia promedio
+6. (3%) Análisis de resultados y conclusiones
+7. (2%) Documentación apropiada
 
 Todo esto debe ser presentado en la documentación tal y como en el avance del proyecto, siguiendo las mismas normas de PEP 8, ortografía, etc.
 
 **Consejos**
 
-- Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar la función de densidad de probabilidad del punto 1., `wss.py` para la estacionaridad en sentido amplio, etc.
+- Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar la función de densidad de probabilidad, `wss.py` para la estacionaridad en sentido amplio, etc.
 - Lo anterior es recomendable también para "aislar" el trabajo en diferentes archivos cuando varias personas están trabajando en un mismo proyecto en Git, para así editar de forma paralela.

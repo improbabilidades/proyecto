@@ -2,6 +2,8 @@
 
 ## Lista de revisión
 
+Asegúrense de cumplir con cada una de las siguientes indicaciones (¡son mayormente sencillas!).
+
 ### Documentación
 
 - [ ] Tiene documentación en MkDocs
@@ -33,10 +35,25 @@
 
 ## Algunas recomendaciones para Markdown
 
+La documentación está en Markdown, que tiene muchas posibilidades.
+
 ### Ejemplo de ecuaciones matemáticas
 
-Sea $X$ una variable aleatoria con:
+Sea $X$ (variable en línea) una variable aleatoria con:
 
 $$
 x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
+
+donde $a \neq 0$ (ecuación en línea).
+
+### Ejemplos de tablas
+
+Herramienta recomendada: [TableConvert](https://tableconvert.com/).
+
+| Producto | Precio |
+|----------|--------|
+| Piña     | 1500   |
+| Melón    | 1250   |
+| Manzana  | 2100   |
+| Papaya   | 1200   |
