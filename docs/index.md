@@ -1,56 +1,48 @@
 # Proyecto de programación
 
-!!! warning "Pendientes"
-    - Ecuaciones matemáticas
-    - Ejemplos de gráficas bien rotuladas
-    - "Siguiente" y "anterior" en pie de página
-    - Ofrecer estructura de presentación de resultados
+## Grupo XYZ
 
-Esta es la documentación del proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas.
+- Nombre completo, carné
+- Nombre completo, carné
+- Nombre completo, carné
 
-Los objetivos están en esta página mientras que una introducción a los temas de recopilación, procesamiento y modelado de datos están en las páginas siguientes. Finalmente están las instrucciones específicas del proyecto.
+### Resumen
 
-## Objetivos
+Nostrum ipsa impedit eveniet, laborum vitae ipsam deserunt exercitationem maxime voluptatibus sapiente veniam libero facilis temporibus, culpa tempore illum blanditiis amet corporis, hic consequuntur officia in quos eveniet nihil at iusto a optio maiores? Assumenda beatae dolore in voluptates voluptatem fugit iusto, perspiciatis quos aperiam officia est at harum ab quam enim.
 
-!!! note "Objetivo general"
-    Implementar una canalización de datos (*pipeline*) en tiempo real para procesamiento y análisis a partir de una fuente de datos externa, utilizando las herramientas computacionales de Python.
+Blanditiis assumenda omnis quidem placeat maxime debitis animi, excepturi esse suscipit aliquam facilis vero adipisci, ab illum est facere facilis debitis sapiente magnam? Porro excepturi minima reiciendis beatae, iste minima qui nulla culpa harum sit ad optio enim doloremque eius, laborum voluptates consequatur excepturi itaque.
 
-### Objetivos específicos de ***programación***
+---
 
-1. Configurar tareas periódicas
-2. Recopilar datos de un API web
-3. Procesar datos en formato JSON
-4. Utilizar bases de datos SQL
-5. Documentar el desarrollo 
+**Universidad de Costa Rica** | Escuela de Ingeniería Eléctrica
 
-### Objetivos específicos de ***aplicación***
+*IE0405 - Modelos Probabilíticos de Señales y Sistemas*
 
-1. Explorar fuentes de datos en tiempo real para su recopilación y análisis.
-2. Utilizar interfaces de programación de aplicaciones (API) de forma programática para obtener datos de fuentes externas.
-3. Utilizar administradores de tareas (Celery Worker) y planificadores de tareas (Celery Beat) para ejecutar tareas periódicas.
-4. Utilizar un gestor de bases de datos (SQLite3, PostgreSQL) y un mapeador de objetos relacional (SQLAlchemy) para interactuar con bases de datos.
-5.  Procesar los datos obtenidos para tratamiento y análisis.
-6.  Utilizar herramientas estadísticas de Python para hacer análisis estadístico descriptivo y modelado probabilístico de los datos recopilados.
-7. Graficar los datos recopilados y sus análisis para visualización y análisis preliminar.
-8. Crear documentación del proyecto en forma de página web para presentación al público en general.
+Profesores 
 
-### Objetivos específicos de ***estadística y probabilidad***
+- Fabián Abarca Calderón
+- Sebastián Ramírez Sandí
 
-1. Realizar análisis exploratorios de datos con estadística descriptiva
-2. Determinar modelos de probabilidad y sus parámetros
-3. Graficar datos y sus modelos de probabilidad
-4. Analizar transformaciones de variables aleatorias
-5. Analizar procesos aleatorios
+Primer ciclo de 2025
 
-## Sobre la documentación
+---
 
-Esta documentación está creada con [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), una plataforma amplísima con múltiples opciones de formato.
+!!! note "Sobre la documentación"
+    Este es el enunciado del proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas.
 
-En el archivo `mkdocs.yml` está la configuración básica de esta documentación, la cual debe ser modificada (especialmente la navegación) para incluir las secciones de la documentación del proyecto y sus resultados.
+    Los objetivos están en esta página mientras que una introducción a los temas de recopilación, procesamiento, almacenamiento y modelado de datos están en las páginas siguientes. Finalmente están las instrucciones específicas del proyecto y las rúbricas de evaluación.
 
-En la carpeta `img/` pueden colocar imágenes como gráficas y similares.
+    Esta documentación está creada con [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), una plataforma amplísima con múltiples opciones de formato.
 
-Pueden agregar la estructura de archivos y carpetas que sea necesaria.
+    En el archivo `mkdocs.yml` está la configuración básica de esta documentación, la cual debe ser modificada (especialmente la navegación) para incluir las secciones de la documentación del proyecto y sus resultados.
+
+    En la carpeta `images/` pueden colocar imágenes como gráficas y similares.
+
+    Pueden agregar la estructura de archivos y carpetas que sea necesaria.
+
+    > Borrar esta nota para la documentación del proyecto.
 
 !!! warning "Contenidos de la documentación del proyecto"
     Para la documentación de su proyecto, deben eliminar los textos del enunciado y solamente agregar la explicación propia de su trabajo. Eso incluye esta sección y las de recopilación, procesamiento y otras.
+
+    > Borrar esta nota para la documentación del proyecto.

@@ -1,14 +1,14 @@
 # Almacenamiento de datos
 
-### ¿Dónde son almacenados los datos?
+## Cómo almacenar datos
 
 Luego de la recopilación, el análisis de datos típicamente continúa con el almacenamiento de datos. Las bases de datos ofrecen almacenamiento permanente y son una solución en el caso de grandes cantidades de datos.
 
-**Nota**: No siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego desecharlos.
+**Nota**: No siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego desecharlos, o guardarlos en un archivo de hojas de cálculo (`.xlsx`, `.ods`, `.gsheet`, etc.), texto plano (`.csv`, `.txt`, etc.) u otros.
 
 Hay distintos tipos de bases de datos y las *bases de datos relacionales* son las más comunes.
 
-#### Bases de datos relacionales
+### Bases de datos relacionales
 
 Las bases de datos relacionales almacenan datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están relacionadas entre sí (de ahí el nombre *relacional*) con *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
 
@@ -63,7 +63,7 @@ En general, las bases de datos tienen *transacciones* del tipo: lectura, creaci�
 
 Los sistemas de administración de bases de datos (DBMS, *Data Base Management System*) más populares son PostgreSQL, SQLite3, MySQL, MariaDB, Oracle y otros.
 
-##### Mapeadores relacionales de objetos
+#### Mapeadores relacionales de objetos
 
 Es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), una  técnica para "mapear" una tabla en un objeto y utilizar la programación orientada a objetos para manipular los datos. La misma búsqueda de estudiantes matriculados en un curso para un ciclo particular en el SQL de ejemplo anterior, ahora en Python con SQLAlchemy sería:
 
@@ -77,7 +77,7 @@ students = session.query(Estudiante).join(Matricula).filter(
 **Nota**: Ver [sección](#bases-de-datos-e-interfaces-orm) más adelante.
 
 
-### Bases de datos e interfaces ORM
+## Bases de datos e interfaces ORM
 
 El uso de bases de datos es un área compleja y especializada, sin embargo, hay herramientas en Python que facilitan su gestión.
 
@@ -140,6 +140,6 @@ Base.metadata.create_all(engine)
 ```
 
 !!! warning "Migraciones"
-    En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias para el caso, completamente usual, en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*), conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` hay que hacer una migración. [Alembic](https://alembic.sqlalchemy.org/en/latest/) es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.
+    En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias en el caso, completamente usual, en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` hay que hacer una migración. [Alembic](https://alembic.sqlalchemy.org/en/latest/) es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.
 
 Para el proyecto la recomendación es utilizar SQLite o PostgreSQL. Una diferencia básica entre ambos es que SQLite3 existe como un archivo binario (por ejemplo, `db.sqlite3` o `data.db`) mientras que PostgreSQL es un programa propiamente, instalado en la computadora o servidor. Para proyectos de gran escala PostgreSQL es recomendado, sin embargo SQLite3 tiene capacidad para manejar cientos de millones de datos, así que en nuestro proyecto no es un problema. Quizá hay que tener más cuidado de no borrar el archivo "de un dedazo".
