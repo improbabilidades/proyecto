@@ -6,7 +6,7 @@ Pandas es una opción popular para manipular los datos obtenidos.
 
 ## Procesamiento y análisis descriptivo con Pandas
 
-En el `PyX` número 2 ([Py2](https://github.com/fabianabarca/python)) hay una amplia discusión sobre Pandas.
+En el `PyX` número 2 ([Py2](https://github.com/fabianabarca/PyX)) hay una amplia discusión sobre Pandas.
 
 Aquí basta con decir que Pandas es el equivalente programático de Microsoft Office Excel y otros programas de ofimática de hojas de cálculo, como Google Spreadsheets y LibreOffice Calc.
 
@@ -51,7 +51,7 @@ Además, por supuesto, Pandas es de código abierto y gratis.
 
 ## Visualización de datos
 
-En el `PyX` número 3 ([Py3](https://github.com/fabianabarca/python)) hay una discusión sobre los conceptos básicos de graficación con Matplotlib.
+En el `PyX` número 3 ([Py3](https://github.com/fabianabarca/PyX)) hay una discusión sobre los conceptos básicos de graficación con Matplotlib.
 
 Matplotlib es popular y poderoso, pero no es la única opción de graficación en Python. Otras opciones populares y con buena documentación son:
 

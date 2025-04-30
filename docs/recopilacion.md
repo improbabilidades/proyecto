@@ -29,7 +29,7 @@ Una de las soluciones más populares es obtener datos de fuentes externas, y hac
 
 ### Datos desde fuentes externas con API
 
-En el **PyX** número 6 ([Py6](https://github.com/fabianabarca/python)) hay una amplia explicación sobre los web API y el uso del paquete `requests` de Python.
+En el **PyX** número 6 ([Py6](https://github.com/fabianabarca/PyX)) hay una amplia explicación sobre los web API y el uso del paquete `requests` de Python.
 
 Hay una gran cantidad de API públicos disponibles en [Public APIs](https://publicapis.dev/) para experimentar con la recolección de datos.
 
