@@ -9,9 +9,9 @@ Primer ciclo de 2025
 
 ## Grupo XYZ
 
-- Nombre completo, carné
-- Nombre completo, carné
-- Nombre completo, carné
+- Nombre completo, carné, grupo
+- Nombre completo, carné, grupo
+- Nombre completo, carné, grupo
 
 ### Resumen
 
