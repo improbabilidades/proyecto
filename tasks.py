@@ -71,7 +71,7 @@ url = config["api"]["url"]
 group = config["api"]["group"]
 period = int(config["scheduler"]["period"])
 
-# Configurar el planificador de tareas de Celery
+# Configurar el planificador de tareas de Celery Beat
 app.conf.beat_schedule = {
     "test-schedule": {
         "task": "tasks.test_task",
