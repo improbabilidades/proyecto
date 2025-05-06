@@ -10,6 +10,7 @@ nav:
   - Instrucciones: instrucciones.md
   - Requisitos: requisitos.md
   - Atributos: atributos.md
+  - Código: codigo.md
 
 theme: 
   name: material
@@ -58,6 +59,12 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+plugins: 
+  - mkdocstrings:
+    handlers:
+      python:
+        options:
+          docstring_style: google
 
 extra:
   generator: false

@@ -20,6 +20,7 @@ elif db == "postgresql":
 
 # Definir los modelos
 class TestData(Base):
+    """Definición de la tabla de ejemplo."""
     __tablename__ = "test_data"
 
     id = Column(Integer, primary_key=True)
