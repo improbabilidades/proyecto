@@ -1,12 +1,12 @@
 # Enunciado del proyecto
 
-## :material-format-list-bulleted-type: Instrucciones
+## Instrucciones
 
-### Configuración
+### :material-cog: Configuración
 
-Siguiendo las instrucciones de esta documentación y el archivo `README.md` instalar y ejecutar localmente el proyecto. También, habilitar el control de versiones con Git y GitHub para todo el equipo en los repositorios de [MPSS-EIE](https://github.com/mpss-eie).
+Siguiendo las instrucciones de esta documentación y el archivo `README.md`, instalar y ejecutar localmente el repositorio con el problema de ejemplo. También, habilitar el control de versiones con Git y GitHub en los repositorios de [MPSS-EIE](https://github.com/mpss-eie).
 
-### Fuente de datos
+### :material-database: Fuente de datos
 
 En el sitio web [Kalouk](https://kalouk.xyz/) estará disponible un API, disponible en el siguiente *endpoint*:
 
@@ -18,65 +18,49 @@ Cada grupo hará solicitudes en este *endpoint* con el parámetro `grupo`. Si un
 GET https://kalouk.xyz/api/datos?grupo=000
 ```
 
-Esto devolverá un conjunto de datos con un formato por determinar. Con la recopilación de estos datos inicia el proyecto.
+Esto devolverá un conjunto de datos con un formato *por determinar*. Con la recopilación de estos datos inicia el proyecto.
 
-### Presentación de avance
+### :material-lightbulb-on: Consejos
 
-***Valor: 10%***
+- Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar una función de densidad de probabilidad, `wss.py` para la estacionaridad en sentido amplio, etc.
+- Lo anterior es recomendable también para "aislar" el trabajo en diferentes archivos cuando varias personas están trabajando en un mismo proyecto en Git, para así editar de forma paralela.
+
+### :material-eye-check: Requisitos
+
+La documentación de ambas entregas debe cumplir con los requisitos de la [siguiente página](requisitos.md).
+
+## Avance
+
+![Static Badge](https://img.shields.io/badge/VALOR-10%25-blue)
 
 En la documentación web deben presentar:
 
 1. (2%) Modelos de la base de datos (`models.py`) y tareas de recolección de datos (`tasks.py`) 
-3. (2%) Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos 
-4. Análisis exploratorio de los datos
-    - (2%) Gráficas descriptivas de `variable_1` y `variable_2` (histogramas y otros, si aplica) 
-    - (2%) Modelos de probabilidad para los datos donde aplica y gráfica sobre el histograma de los datos 
+2. (2%) Recolección preliminar de datos (al menos 12 horas continuas) en la base de datos 
+3. Análisis exploratorio de los datos
+    - (2%) Gráficas descriptivas de las variables (histogramas y otros, cuando aplica) 
+    - (2%) Modelos de probabilidad para los datos cuando aplica y gráfica de la función de densidad sobre el histograma de los datos 
     - (2%) Momentos de los modelos (promedio, varianza, desviación estándar, inclinación, kurtosis) 
 
-**Notas**
+## Reporte final
 
-- Todo el código debe cumplir con PEP 8 y será evaluado usando, por ejemplo, `$ flake8 tasks.py`.
-- El desarrollo debe estar ampliamente comentado.
-- La buena ortografía y gramática son esenciales.
-- Ver página de [requisitos](requisitos.md) de las entregas.
-
-### Presentación del reporte final
-
-***Valor: 20%***
+![Static Badge](https://img.shields.io/badge/VALOR-20%25-blue)
 
 Los datos recopilados representan una secuencia aleatoria, por cuanto son una sucesión de variables muestreadas en instantes discretos de tiempo, indexados por una marca temporal. En este sentido, es necesario hacer un análisis de *procesos aleatorios* a los datos recopilados.
 
-Algunos elementos por determinar son:
-
-- Función de densidad de probabilidad
-- Estacionaridad en sentido amplio
-- Promedios temporales de funciones muestra
-- Ergodicidad
-- Funciones de correlación y covarianza
-- Potencia promedio
-- Densidad espectral de potencia
-- Análisis de ruido
-
-Cada grupo hará solicitudes en este *endpoint* con el parámetro `proceso`. Si un grupo es, por ejemplo, el 000, entonces la solicitud de datos es:
+Cada grupo hará solicitudes en el siguiente *endpoint*. Si un grupo es, por ejemplo, el 000, entonces la solicitud de datos es:
 
 ```http
 GET https://kalouk.xyz/api/proceso?grupo=000
 ```
 
-Esto devolverá un conjunto de datos con un formato por determinar. Con la recopilación de estos datos inicia el proyecto.
+Esto devolverá un conjunto de datos con un formato *por determinar*.
 
 Las asignaciones son:
 
 1. (1%) Nueva recopilación de datos por 24 horas (con gráficas u otros elementos probatorios)
 2. (5%) Determinación de la función de densidad de probabilidad
-3. (5%) Determinación de la estacionaridad en sentido amplio y ergodicidad
-5. (4%) Determinación de la potencia promedio
-6. (3%) Análisis de resultados y conclusiones
-7. (2%) Documentación apropiada
-
-Todo esto debe ser presentado en la documentación tal y como en el avance del proyecto, siguiendo las mismas normas de PEP 8, ortografía, etc.
-
-**Consejos**
-
-- Es posible crear nuevos archivos con *scripts* para la solución de las preguntas planteadas. Por ejemplo: `pdf.py` para determinar la función de densidad de probabilidad, `wss.py` para la estacionaridad en sentido amplio, etc.
-- Lo anterior es recomendable también para "aislar" el trabajo en diferentes archivos cuando varias personas están trabajando en un mismo proyecto en Git, para así editar de forma paralela.
+3. (5%) Determinación de la estacionaridad en sentido amplio y la ergodicidad
+4. (4%) Determinación de la potencia promedio
+5. (3%) Análisis de resultados y conclusiones
+6. (2%) Documentación apropiada

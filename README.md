@@ -175,3 +175,28 @@ $ python
 ```
 
 Es decir, utilizar Python para importar la función `test_task` (o la función creada para su proyecto) y ejecutar el método `.delay()` para ejecución sincrónica ("en el momento").
+
+## Algunas recomendaciones para Markdown
+
+La documentación está en Markdown, que tiene muchas posibilidades.
+
+### Ejemplo de ecuaciones matemáticas
+
+Sea $X$ (variable en línea) una variable aleatoria con:
+
+$$
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+donde $a \neq 0$ (ecuación en línea).
+
+### Ejemplo de tablas
+
+Herramienta recomendada: [TableConvert](https://tableconvert.com/).
+
+| Producto | Precio |
+|----------|--------|
+| Piña     | 1500   |
+| Melón    | 1250   |
+| Manzana  | 2100   |
+| Papaya   | 1200   |

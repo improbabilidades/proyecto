@@ -60,11 +60,7 @@ markdown_extensions:
       custom_checkbox: true
 
 plugins: 
-  - mkdocstrings:
-    handlers:
-      python:
-        options:
-          docstring_style: google
+  - mkdocstrings
 
 extra:
   generator: false
