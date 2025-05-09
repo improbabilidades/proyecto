@@ -48,7 +48,7 @@ def test_task(url, group):
                 variable_3=data["variable_3"][sample],
             )
             session.add(record)
-            session.commit()
+        session.commit()
         return "¡Hola mundo!"
     else:
         logging.error(f"Error {response.status_code}: {response.text}")
