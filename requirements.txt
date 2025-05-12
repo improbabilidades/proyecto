@@ -5,4 +5,3 @@ pandas
 scipy
 matplotlib
 mkdocs-material
-mkdocstrings[python]

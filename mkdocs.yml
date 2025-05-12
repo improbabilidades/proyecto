@@ -10,7 +10,6 @@ nav:
   - Instrucciones: instrucciones.md
   - Requisitos: requisitos.md
   - Atributos: atributos.md
-  - Código: codigo.md
 
 theme: 
   name: material
@@ -58,9 +57,6 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
-
-plugins: 
-  - mkdocstrings
 
 extra:
   generator: false
