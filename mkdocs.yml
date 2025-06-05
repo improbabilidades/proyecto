@@ -2,14 +2,12 @@ site_name: Proyecto de Programación de Modelos Probabilísticos
 
 nav:
   - Inicio: index.md
-  - Objetivos: objetivos.md
-  - Recopilación: recopilacion.md
-  - Almacenamiento: almacenamiento.md
-  - Exploración: exploracion.md
-  - Modelado: modelado.md
+  - Datos: datos.md
+  - Modelos: modelos.md
+  - Análisis: analisis.md
+  - Conclusiones: conclusiones.md
   - Instrucciones: instrucciones.md
-  - Requisitos: requisitos.md
-  - Atributos: atributos.md
+
 
 theme: 
   name: material
