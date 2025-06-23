@@ -125,4 +125,4 @@ Las asignaciones son:
 
 Nota: la determinación de los valores numéricos puede ser hecha después de la recolección de datos, en cuyo caso es necesario utilizar una base de datos para almacenar los eventos y hacer las consultas necesarias.
 
-Nota: el servidor SSE está en la dirección https://web.kalouk.xyz/sse/.
+Nota: el servidor SSE está en la dirección [https://web.kalouk.xyz/sse/](https://web.kalouk.xyz/sse/).
