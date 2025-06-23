@@ -26,6 +26,7 @@ theme:
     - toc.integrate
     - content.tooltips
     - content.code.copy
+    - content.code.annotate 
 
 extra_javascript:
   - javascripts/katex.js

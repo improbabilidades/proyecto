@@ -92,6 +92,10 @@ Las asignaciones son:
 
     :   Sitio web de promoción de las ferias del agricultor desarrollado por el TCU "Tropicalización de la tecnología".
 
+    :material-github: [**simovilab/\*** :star:](https://github.com/orgs/simovilab/repositories)
+
+    :   Todos los repositorios de SIMOVI.
+
 2. (2%) ¡Seguir cuentas! Visitar GitHub con su cuenta y dar "Follow" en todas las siguientes cuentas:
 
     :material-github: [**improbabilidades**](https://github.com/improbabilidades)
@@ -116,13 +120,80 @@ Las asignaciones son:
 
 1. (2%) Realizar la evaluación docente del profesor de cada grupo respectivo, en el link provisto por la universidad. Como evidencia, presentar una captura de pantalla del mensaje al finalizar la evaluación.
 1. (2%) Participar de la sesión sincrónica/asincrónica del tema de Cadenas de Markov (instrucciones precisas serán enviadas por chat y correo electrónico). 
-1. (12%) En el servidor web de Kalouk hay un proceso aleatorio que representa un sistema M/M/1, que es una "máquina" de colas con una sola línea de espera y un único servidor. El archivo `sse-client.py` es un cliente de _Server-Sent Events_ (SSE) que se conecta a este proceso aleatorio y recibe eventos de cambio de estado del sistema. El cliente imprime en la terminal los eventos recibidos. Es necesario modificar este archivo para conseguir los siguientes objetivos:
-    - (3%) Durante al menos una hora, registrar los eventos de cambio de estado de un proceso aleatorio.
+1. (12%) En el servidor web de Kalouk hay un proceso aleatorio que representa un sistema M/M/1, que es una "máquina" de colas con una sola fila y un único servidor. El archivo `sse-client.py` es un cliente de _Server-Sent Events_ (SSE) que se conecta a este proceso aleatorio y recibe eventos de cambio de estado del sistema. El cliente imprime en la terminal los eventos recibidos. Es necesario modificar este archivo para conseguir los siguientes objetivos:
+    - (1%) Durante al menos una hora, registrar los eventos de cambio de estado de un proceso aleatorio.
     - (4%) Determinar experimentalmente el valor numérico de los parámetros $\Omega_i$, $p_i$ y $q_i$ de la cadena de Markov, para cada estado $i$.
-    - (3%) Determinar experimentalmente el vector de probabilidad de estado estable del sistema y sus valores numéricos.
-    - (2%) Analizar los resultados obtenidos.
+    - (4%) Determinar experimentalmente el vector de probabilidad de estado estable del sistema y sus valores numéricos.
+    - (3%) Analizar los resultados obtenidos.
+
+**Nota**: la determinación de los valores numéricos puede ser hecha después de la recolección de datos, en cuyo caso es necesario utilizar una base de datos para almacenar los eventos y hacer las consultas necesarias.
+
+**Nota**: el servidor SSE está en la dirección [https://web.kalouk.xyz/sse/](https://web.kalouk.xyz/sse/).
+
+## Notas sobre la Parte II
+
+Un web API RESTful como el de la Parte I es un modelo de comunicación donde el cliente siempre inicia la comunicación con una solicitud y el servidor responde. Cuando es necesario registrar eventos en tiempo real, un API a menudo no es la mejor opción pues requeriría una estrategia de *polling* en la que se hacen llamadas de alta frecuencia para consultar si hay cambios, y es poco eficiente. Por otra parte, en un servidor SSE (_Server-Sent Event_) el servidor envía eventos al cliente en una conexión persistente cada vez que ocurre un evento y sin que el cliente tenga que solicitarlo. Esto es útil para aplicaciones en tiempo real, como la monitorización de procesos aleatorios.
+
+Por esto, la Parte II del proyecto utiliza un servidor SSE para publicar eventos de cambio de estado del proceso aleatorio que representa una cadena de Markov. 
+
+El cliente en el archivo `sse-client.py` se conecta a este servidor y recibe eventos en tiempo real, que luego se pueden procesar para obtener los parámetros del sistema M/M/1 solicitados en las instrucciones.
+
+A continuación hay una explicación del código del cliente `sse-client.py` que se debe completar -junto con cualquier otro archivo adicional- para cumplir con los objetivos de la Parte II del proyecto (dar clic al símbolo + para ver más detalles).
+
+Para ejecutar este cliente es necesario instalar las nuevas dependencias del proyecto, que se encuentran en el archivo `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+Luego, se puede ejecutar el cliente con el siguiente comando:
+
+```bash
+python sse-client.py    
+```
+
+El cliente se conectará al servidor SSE y comenzará a recibir eventos de cambio de estado del proceso aleatorio.
+
+``` py title="sse-client.py"
+import httpx
+from httpx_sse import connect_sse
+import json
 
 
-Nota: la determinación de los valores numéricos puede ser hecha después de la recolección de datos, en cuyo caso es necesario utilizar una base de datos para almacenar los eventos y hacer las consultas necesarias.
+def handle_state_message(data): # (1)
+    try: # (2)
+        payload = json.loads(data) # (3)
+        state = int(payload.get("state")) # (4)
+        if isinstance(state, int) and state >= 0: # (5)
+            pass # (6)
+    except (json.JSONDecodeError, TypeError): # (7)
+        print("Formato de mensaje inválido:", data)
 
-Nota: el servidor SSE está en la dirección [https://web.kalouk.xyz/sse/](https://web.kalouk.xyz/sse/).
+
+def main(): # (8)
+    url = "https://web.kalouk.xyz/sse/"
+    with httpx.Client() as client: # (9)
+        with connect_sse(client, "GET", url) as event_source: # (10)
+            for sse in event_source.iter_sse(): # (11)
+                if sse.data: # (12)
+                    handle_state_message(sse.data) # (13)
+
+
+if __name__ == "__main__": # (14)
+    main()
+```
+
+1.  Esta es la función que debe ser completada para manejar los mensajes de estado del proceso aleatorio.
+2.  Intenta hacer la decodificación y el resto de la lógica.
+3.  Decodifica el mensaje JSON.
+4.  Extrae el estado del proceso aleatorio con la llave `state`. Se convierte a número entero.
+5.  Verifica si el estado es un número entero válido y mayor o igual que 0. 
+6.  :star: Aquí se puede implementar la lógica para registrar el evento o realizar cálculos adicionales.
+7.  Captura errores de decodificación JSON o tipo de dato, e imprime un mensaje de error si el formato del mensaje es inválido.
+8.  Define la función principal del *script*.
+9.  Abre un cliente HTTP para hacer solicitudes al servidor, con el alias `client`.
+10.  Se conecta al servidor SSE con el cliente `client` en la URL especificada, usando el método `GET`. El resultado es un objeto con el alias `event_source` que permite iterar sobre los eventos SSE.
+11.  Itera sobre los eventos SSE recibidos del servidor.
+12.  Comprueba si el evento tiene datos. Si los tiene, llama a la función `handle_state_message` para procesar el mensaje.
+13.  La función `handle_state_message` recibe el mensaje de estado del proceso aleatorio, lo decodifica y extrae el estado.
+14.  Comprueba si el *script* se está ejecutando directamente y llama a la función `main` para iniciar el proceso.
