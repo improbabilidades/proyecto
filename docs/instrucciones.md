@@ -130,6 +130,8 @@ Las asignaciones son:
 
 **Nota**: el servidor SSE está en la dirección [https://web.kalouk.xyz/sse/](https://web.kalouk.xyz/sse/).
 
+**Nota**: pueden ver una prueba de funcionamiento del servidor SSE en el link [https://web.kalouk.xyz/sse-test/](https://web.kalouk.xyz/sse-test/).
+
 ## Notas sobre la Parte II
 
 Un web API RESTful como el de la Parte I es un modelo de comunicación donde el cliente siempre inicia la comunicación con una solicitud y el servidor responde. Cuando es necesario registrar eventos en tiempo real, un API a menudo no es la mejor opción pues requeriría una estrategia de *polling* en la que se hacen llamadas de alta frecuencia para consultar si hay cambios, y es poco eficiente. Por otra parte, en un servidor SSE (_Server-Sent Event_) el servidor envía eventos al cliente en una conexión persistente cada vez que ocurre un evento y sin que el cliente tenga que solicitarlo. Esto es útil para aplicaciones en tiempo real, como la monitorización de procesos aleatorios.
