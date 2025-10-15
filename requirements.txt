@@ -1,9 +1,0 @@
-requests
-celery[redis]
-httpx
-httpx_sse
-sqlalchemy
-pandas
-scipy
-matplotlib
-mkdocs-material
