@@ -5,11 +5,11 @@ description = "Proyecto de IE0405 - Modelos Probabilísticos de Señales y Siste
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "celery[redis]>=5.5.3",
+    "dotenv>=0.9.9",
     "httpx>=0.28.1",
-    "httpx-sse>=0.4.3",
     "matplotlib>=3.10.7",
     "mkdocs-material>=9.6.22",
+    "paho-mqtt>=2.1.0",
     "pandas>=2.3.3",
     "requests>=2.32.5",
     "scipy>=1.16.2",

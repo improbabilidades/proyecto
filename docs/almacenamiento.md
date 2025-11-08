@@ -8,7 +8,7 @@ Hay distintos tipos de bases de datos y las *bases de datos relacionales* son la
 
 ## Bases de datos relacionales
 
-Las bases de datos relacionales almacenan datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están relacionadas entre sí (de ahí el nombre *relacional*) por medio de *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
+Las bases de datos relacionales almacenan datos *tabulares* -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas *campos* (*fields*), y filas, también llamadas *registros* (*records*). Cada tabla tiene una *llave primaria* (PK, *primary key*) que identifica de forma única cada registro. Las tablas están *relacionadas* entre sí (de ahí el nombre *relacional*) por medio de *llaves foráneas* (FK, *foreign key*) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.
 
 En el siguiente *diagrama entidad-relación* (ERD) simplificado, una tabla tiene datos de estudiantes, otra tabla tiene datos de los cursos y una tercera tabla vincula cursos con estudiantes (relación muchos-a-muchos, *many-to-many*) con llaves foráneas a las dos tablas anteriores.
 
@@ -44,7 +44,7 @@ Las bases de datos relacionales más utilizadas son tipo SQL (*Structured Query 
 SELECT nombre, edad FROM estudiantes WHERE id = B00000;
 ```
 
-devuelve los datos de `nombre` y `edad` (pero no `promedio`) del carné B00000 en la tabla `estudiantes`.
+devuelve los datos de `nombre` y `edad` (pero no `promedio`) del carné (`id`) B00000 en la tabla `estudiantes`.
 
 Las consultas (*queries*) de SQL pueden ser complejas. Por ejemplo:
 
@@ -55,15 +55,15 @@ JOIN MATRICULA ON ESTUDIANTE.estudiante_id = MATRICULA.estudiante_id
 WHERE MATRICULA.curso_id = 'IE0405' AND MATRICULA.ciclo = '2027-1';
 ```
 
-devuelve todos los datos de los estudiantes matriculados en el curso IE0405 en el primer ciclo del 2027.
+devuelve todos los datos (`ESTUDIANTE.*`) de los estudiantes matriculados en el curso IE0405 (`MATRICULA.curso_id`) en el primer ciclo del 2027 (`MATRICULA.ciclo`).
 
-En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros (CRUD, *Create*, *Read*, *Update*, *Delete*).
+En general, las bases de datos tienen *transacciones* del tipo: lectura, creación, actualización y eliminación de registros, conocidas como operaciones CRUD (*Create*, *Read*, *Update*, *Delete*).
 
 Los sistemas de administración de bases de datos (DBMS, *Data Base Management System*) [más populares](https://survey.stackoverflow.co/2024/technology#1-databases) son PostgreSQL, MySQL, SQLite, MongoDB, Redis, MariaDB y otros.
 
 ## Bases de datos e interfaces ORM
 
-Es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), una  técnica para "mapear" una **tabla** (y su esquema) en un **objeto** y utilizar la programación orientada a objetos para manipular los datos, y abstraer la especificidad de distintas bases de datos utilizadas. 
+Aparte de SQL, es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, *Object-Relational Mapping*), una  técnica para "mapear" una **tabla** (y su esquema) en un **objeto** descrito en una **clase** y utilizar la programación orientada a objetos para manipular los datos, y abstraer la especificidad de distintas bases de datos utilizadas. 
 
 El uso de bases de datos es un área compleja y especializada, sin embargo, hay herramientas en Python que facilitan su gestión.
 
@@ -79,6 +79,8 @@ students = session.query(Estudiante).join(Matricula).filter(
     Matricula.ciclo == "2027-1"
 ).all()
 ```
+
+Para quien está familiarizado con Python, la sintaxis de esta búsqueda es más sencilla.
 
 En general, el ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma:
 
@@ -124,7 +126,7 @@ Aquí fueron creadas las tres tablas, donde `matriculas` hace referencia por med
 
 Finalmente, hay que crear las tablas estableciendo un `engine` o referencia a la base de datos a utilizar (en este caso SQLite3) y crear una *sesión* ligada a ese `engine`, para poder ejecutar las transacciones deseadas.
 
-```python
+```python title="Creación de la base de datos en una sesión"
 # Crear la conexión a la base de datos SQLite3
 engine = create_engine(f"sqlite:///{name}")
 Session = sessionmaker(bind=engine)
@@ -134,12 +136,12 @@ session = Session()
 Base.metadata.create_all(engine)
 ```
 
-La ejecución del código anterior crea las tablas especificadas, pero sobreescribe cualquier base de datos existente y sus datos (ver [Migraciones](#migraciones)).
+La ejecución del código anterior crea las tablas especificadas, pero sobrescribe cualquier base de datos existente y sus datos (ver [Migraciones](#migraciones)).
 
-Para el proyecto la recomendación es utilizar SQLite o PostgreSQL. Una diferencia básica entre ambos es que SQLite3 existe como un archivo binario (por ejemplo, `db.sqlite3` o `data.db`) mientras que PostgreSQL es un programa propiamente, instalado en la computadora o servidor. Para proyectos de gran escala PostgreSQL es recomendado, sin embargo SQLite3 tiene capacidad para manejar cientos de millones de datos, así que en nuestro proyecto no es un problema. Quizá hay que tener más cuidado de no borrar el archivo "de un dedazo".
+Para el proyecto la recomendación es utilizar SQLite o PostgreSQL. Una diferencia básica entre ambos es que SQLite3 existe como un archivo binario (por ejemplo, `db.sqlite3` o `data.db`) mientras que PostgreSQL es un programa propiamente, instalado en la computadora o servidor. Para proyectos de gran escala PostgreSQL es recomendado, sin embargo SQLite3 tiene capacidad para manejar cientos de millones de datos, así que en nuestro proyecto no es un problema. Quizá hay que tener más cuidado de no borrar el archivo de "un dedazo".
 
 #### Migraciones
 
-En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias en el caso, completamente usual, en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` hay que hacer una migración. 
+En este proyecto no está determinado un mecanismo fundamental de *migraciones*, que son necesarias en el caso -completamente usual- en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (*clases*) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de `estudiante_id` de `String` a `Integer` o para agregar una columna `edad`, hay que hacer una migración. 
 
 [Alembic](https://alembic.sqlalchemy.org/en/latest/) es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.

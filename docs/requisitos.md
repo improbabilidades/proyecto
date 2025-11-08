@@ -34,4 +34,4 @@ Asegúrense de cumplir con cada una de las siguientes indicaciones (¡son, mayor
 
 La mejor recomendación es instalar una extensión de formato automático en el editor (como VS Code). [Black](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter) o [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) son buenos y recomendados. Así, será posible dar formato automáticamente con, por ejemplo, `Alt` + `Shift` + `F`.
 
-El código será evaluado usando `$ flake8 <archivo>.py`, que devuelve una [lista de errores](https://flake8.pycqa.org/en/latest/user/error-codes.html) (o violaciones a la norma) encontrados.
+El código será evaluado usando `$ uv run ruff check .`, que devuelve una lista de errores (o violaciones a la norma) encontrados y habrá deducciones de puntos por esto. Para corregir esos problemas, simplemente es necesario hacer `$ uv run ruff format .` antes de enviar el proyecto.

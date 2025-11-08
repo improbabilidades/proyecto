@@ -1,7 +1,8 @@
 **Universidad de Costa Rica** | Escuela de Ingeniería Eléctrica <br>
 *IE0405 - Modelos Probabilíticos de Señales y Sistemas* <br>
 Profesores: Fabián Abarca Calderón y Sebastián Ramírez Sandí <br>
-Primer ciclo de 2025
+Asistente: Darío Guzmán Carranza <br>
+Segundo ciclo de 2025
 
 # Proyecto de programación
 
@@ -17,7 +18,7 @@ Primer ciclo de 2025
 
 Nostrum ipsa impedit eveniet, laborum vitae ipsam deserunt exercitationem maxime voluptatibus sapiente veniam libero facilis temporibus, culpa tempore illum blanditiis amet corporis, hic consequuntur officia in quos eveniet nihil at iusto a optio maiores? Assumenda beatae dolore in voluptates voluptatem fugit iusto, perspiciatis quos aperiam officia est at harum ab quam enim.
 
-Blanditiis assumenda omnis quidem placeat maxime debitis animi, excepturi esse suscipit aliquam facilis vero adipisci, ab illum est facere facilis debitis sapiente magnam? Porro excepturi minima reiciendis beatae, iste minima qui nulla culpa harum sit ad optio enim doloremque eius, laborum voluptates consequatur excepturi itaque.
+Blanditiis assumenda omnis quidem placeat maxime debitis animi, excepturi esse suscipit aliquam facilis vero adipisci, ab illum est facere facilis debitis sapiente magnam? Porro excepturi minima reiciendis beatae, iste minima qui nulla culpa harum sit ad optio enim doloremque eius, laborum voluptates consequatur excepturi itaque. 
 
 ### Secciones
 

@@ -1,6 +1,3 @@
-# Proyecto
-proyecto.cfg
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -92,6 +89,9 @@ ipython_config.py
 
 # macOS
 .DS_Store
+
+# Ruff cache
+.ruff-cache/
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
