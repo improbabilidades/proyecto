@@ -67,7 +67,7 @@ def on_message(client, userdata, msg):
             session.add(record)
             session.commit()  # 💾
 
-        logger.info(f"Datos añadidos a la base de datos: {record.id}")
+            logger.info(f"Datos añadidos a la base de datos: {record.id}")
 
     except Exception as e:
         logger.error(f"Error al procesar mensaje: {e}", exc_info=True)
