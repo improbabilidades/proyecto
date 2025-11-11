@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 def on_connect(client, userdata, flags, rc, properties=None):
     """Callback (función de continuación) para cuando el cliente se conecta al broker"""
     if rc == 0:
-        logger.info(f"Conectado al broker MQTT en {MQTT_HOST}:{MQTT_PORT}")  # 🎉
+        logger.info(f"🎉 Conectado al broker MQTT en {MQTT_HOST}:{MQTT_PORT}")
         client.subscribe(MQTT_TOPIC)
         logger.info(f"Suscrito al tópico: {MQTT_TOPIC}")
     else:
@@ -80,7 +80,7 @@ def on_disconnect(client, userdata, flags, rc, properties=None):
             f"Desconexión inesperada del broker MQTT, código de retorno: {rc}"
         )
     else:
-        logger.info("Desconectado del broker MQTT")  # 👋
+        logger.info("👋 Desconectado del broker MQTT")
 
 
 def main():
@@ -129,13 +129,13 @@ def main():
 
     # Iniciar el ciclo de procesamiento de mensajes
     try:
-        logger.info("Iniciando ciclo del cliente MQTT...")
+        logger.info("Iniciando ciclo (bucle infinito) del cliente MQTT...")
         client.loop_forever()  # ⭐️
     except KeyboardInterrupt:
         logger.info("Señal de apagado recibida")
     finally:
         client.disconnect()
-        logger.info("Servicio de suscriptor detenido")
+        logger.info("Servicio de suscriptor finalizado 👋")
 
 
 # Ejecutar la función principal si este archivo es ejecutado directamente
