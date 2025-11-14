@@ -1,0 +1,956 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../recopilacion/">
+      
+      
+        <link rel="next" href="../exploracion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/plot.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Almacenamiento - Proyecto de Programación de Modelos Probabilísticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#almacenamiento-de-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-header__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../images/plot.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto de Programación de Modelos Probabilísticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Almacenamiento
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../objetivos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Objetivos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recopilacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Recopilación
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Almacenamiento
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../exploracion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Exploración
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../modelado/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modelado
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../instrucciones/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Instrucciones
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requisitos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requisitos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../atributos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Atributos
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-nav__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../images/plot.png" alt="logo">
+
+    </a>
+    Proyecto de Programación de Modelos Probabilísticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objetivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recopilacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recopilación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Almacenamiento
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Almacenamiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bases-de-datos-relacionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bases de datos relacionales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bases-de-datos-e-interfaces-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bases de datos e interfaces ORM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bases de datos e interfaces ORM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlalchemy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQLAlchemy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLAlchemy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migraciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exploracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instrucciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrucciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atributos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atributos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="almacenamiento-de-datos">Almacenamiento de datos</h1>
+<p>Luego de la recopilación, el análisis de datos típicamente continúa con el almacenamiento de datos. Las bases de datos ofrecen almacenamiento permanente y son una solución en el caso de grandes cantidades de datos.</p>
+<p><strong>Nota</strong>: No siempre es necesario almacenar los datos de esta forma. A menudo es suficiente hacer el análisis de los datos y luego desecharlos, o guardarlos en un archivo de hojas de cálculo (<code>.xlsx</code>, <code>.ods</code>, <code>.gsheet</code>, etc.), texto plano (<code>.csv</code>, <code>.txt</code>, etc.) u otros.</p>
+<p>Hay distintos tipos de bases de datos y las <em>bases de datos relacionales</em> son las más comunes.</p>
+<h2 id="bases-de-datos-relacionales">Bases de datos relacionales</h2>
+<p>Las bases de datos relacionales almacenan datos <em>tabulares</em> -y por tanto "planos" y "no anidados"- en tablas con columnas, también llamadas <em>campos</em> (<em>fields</em>), y filas, también llamadas <em>registros</em> (<em>records</em>). Cada tabla tiene una <em>llave primaria</em> (PK, <em>primary key</em>) que identifica de forma única cada registro. Las tablas están <em>relacionadas</em> entre sí (de ahí el nombre <em>relacional</em>) por medio de <em>llaves foráneas</em> (FK, <em>foreign key</em>) que hacen referencia a un registro de otra tabla, creando una estructura lógica entre las tablas de una misma base de datos.</p>
+<p>En el siguiente <em>diagrama entidad-relación</em> (ERD) simplificado, una tabla tiene datos de estudiantes, otra tabla tiene datos de los cursos y una tercera tabla vincula cursos con estudiantes (relación muchos-a-muchos, <em>many-to-many</em>) con llaves foráneas a las dos tablas anteriores.</p>
+<pre class="mermaid"><code>---
+title: Ejemplo de base de datos
+---
+erDiagram
+    ESTUDIANTE }o--o{ MATRICULA : matricula
+    ESTUDIANTE {
+        string estudiante_id PK
+        string nombre
+        int edad
+        float promedio
+    }
+    CURSO {
+        string curso_id PK
+        string nombre
+    }
+    MATRICULA }o--o{ CURSO : matricula
+    MATRICULA {
+        string estudiante_id FK
+        string curso_id FK
+        string ciclo
+    }</code></pre>
+<p>En esta base de datos están almacenados todos los estudiantes que tiene un curso para un ciclo particular.</p>
+<p>Las bases de datos relacionales más utilizadas son tipo SQL (<em>Structured Query Language</em>), que utilizan un lenguaje especial para hacer consultas a la base de datos. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B00000</span><span class="p">;</span>
+</code></pre></div>
+<p>devuelve los datos de <code>nombre</code> y <code>edad</code> (pero no <code>promedio</code>) del carné (<code>id</code>) B00000 en la tabla <code>estudiantes</code>.</p>
+<p>Las consultas (<em>queries</em>) de SQL pueden ser complejas. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ESTUDIANTE</span><span class="p">.</span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">ESTUDIANTE</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">MATRICULA</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ESTUDIANTE</span><span class="p">.</span><span class="n">estudiante_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MATRICULA</span><span class="p">.</span><span class="n">estudiante_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">MATRICULA</span><span class="p">.</span><span class="n">curso_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;IE0405&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">MATRICULA</span><span class="p">.</span><span class="n">ciclo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2027-1&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>devuelve todos los datos (<code>ESTUDIANTE.*</code>) de los estudiantes matriculados en el curso IE0405 (<code>MATRICULA.curso_id</code>) en el primer ciclo del 2027 (<code>MATRICULA.ciclo</code>).</p>
+<p>En general, las bases de datos tienen <em>transacciones</em> del tipo: lectura, creación, actualización y eliminación de registros, conocidas como operaciones CRUD (<em>Create</em>, <em>Read</em>, <em>Update</em>, <em>Delete</em>).</p>
+<p>Los sistemas de administración de bases de datos (DBMS, <em>Data Base Management System</em>) <a href="https://survey.stackoverflow.co/2024/technology#1-databases">más populares</a> son PostgreSQL, MySQL, SQLite, MongoDB, Redis, MariaDB y otros.</p>
+<h2 id="bases-de-datos-e-interfaces-orm">Bases de datos e interfaces ORM</h2>
+<p>Aparte de SQL, es posible utilizar otros lenguajes de programación para hacer transacciones con bases de datos, por medio de un mapeador relacional de objetos (ORM, <em>Object-Relational Mapping</em>), una  técnica para "mapear" una <strong>tabla</strong> (y su esquema) en un <strong>objeto</strong> descrito en una <strong>clase</strong> y utilizar la programación orientada a objetos para manipular los datos, y abstraer la especificidad de distintas bases de datos utilizadas. </p>
+<p>El uso de bases de datos es un área compleja y especializada, sin embargo, hay herramientas en Python que facilitan su gestión.</p>
+<h3 id="sqlalchemy">SQLAlchemy</h3>
+<p>En Python existe <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>, un poderoso paquete para interactuar con los DBMS más populares.</p>
+<p>La misma búsqueda de estudiantes matriculados en un curso para un ciclo particular en el SQL de ejemplo anterior, ahora en Python y con SQLAlchemy sería:</p>
+<div class="highlight"><pre><span></span><code><span class="n">students</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Estudiante</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Matricula</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">Matricula</span><span class="o">.</span><span class="n">curso_id</span> <span class="o">==</span> <span class="s2">&quot;IE0405&quot;</span><span class="p">,</span>
+    <span class="n">Matricula</span><span class="o">.</span><span class="n">ciclo</span> <span class="o">==</span> <span class="s2">&quot;2027-1&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</code></pre></div>
+<p>Para quien está familiarizado con Python, la sintaxis de esta búsqueda es más sencilla.</p>
+<p>En general, el ejemplo de la tabla de datos de estudiantes, cursos y matrícula mostrados anteriormente, puede ser implementado de la siguiente forma:</p>
+<div class="highlight"><span class="filename">Definición de modelos de la base de datos</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">String</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.ext.declarative</span><span class="w"> </span><span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">sessionmaker</span>
+
+<span class="c1"># Crear la clase base de cada tabla</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+
+
+<span class="c1"># Definir los modelos</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Estudiante</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;estudiantes&quot;</span>
+
+    <span class="n">estudiante_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">edad</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+    <span class="n">promedio</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Float</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Curso</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span><span class="p">:</span> <span class="o">=</span> <span class="s2">&quot;cursos&quot;</span>
+
+    <span class="n">curso_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Matricula</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;matriculas&quot;</span>
+
+    <span class="n">estudiante_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&quot;estudiantes.estudiante_id&quot;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">curso_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&quot;cursos.curso_id&quot;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ciclo</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Definir relación de matrícula con los modelos de estudiante y curso</span>
+    <span class="n">estudiante</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Estudiante&quot;</span><span class="p">)</span>
+    <span class="n">curso</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Curso&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Aquí fueron creadas las tres tablas, donde <code>matriculas</code> hace referencia por medio de llaves foráneas a las llaves primarias <code>estudiantes.estudiante_id</code> y <code>cursos.curso_id</code>. En esta misma tabla nótese también que las tres columnas tienen <code>primary_key=True</code>, lo que indica una <em>llave primaria compuesta</em>, para lo cual cada registro debe tener una <em>combinación única</em> de estudiante, curso y ciclo lectivo.</p>
+<p>Finalmente, hay que crear las tablas estableciendo un <code>engine</code> o referencia a la base de datos a utilizar (en este caso SQLite3) y crear una <em>sesión</em> ligada a ese <code>engine</code>, para poder ejecutar las transacciones deseadas.</p>
+<div class="highlight"><span class="filename">Creación de la base de datos en una sesión</span><pre><span></span><code><span class="c1"># Crear la conexión a la base de datos SQLite3</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sqlite:///</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+
+<span class="c1"># Crear la(s) tabla(s) en la base de datos</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
+<p>La ejecución del código anterior crea las tablas especificadas, pero sobrescribe cualquier base de datos existente y sus datos (ver <a href="#migraciones">Migraciones</a>).</p>
+<p>Para el proyecto la recomendación es utilizar SQLite o PostgreSQL. Una diferencia básica entre ambos es que SQLite3 existe como un archivo binario (por ejemplo, <code>db.sqlite3</code> o <code>data.db</code>) mientras que PostgreSQL es un programa propiamente, instalado en la computadora o servidor. Para proyectos de gran escala PostgreSQL es recomendado, sin embargo SQLite3 tiene capacidad para manejar cientos de millones de datos, así que en nuestro proyecto no es un problema. Quizá hay que tener más cuidado de no borrar el archivo de "un dedazo".</p>
+<h4 id="migraciones">Migraciones</h4>
+<p>En este proyecto no está determinado un mecanismo fundamental de <em>migraciones</em>, que son necesarias en el caso -completamente usual- en el que hay que realizar una actualización en la base de datos cuando hay cambios en los modelos (<em>clases</em>) que definen su esquema, conservando al mismo tiempo los datos ya almacenados. Por ejemplo, para cambiar el tipo de dato de <code>estudiante_id</code> de <code>String</code> a <code>Integer</code> o para agregar una columna <code>edad</code>, hay que hacer una migración. </p>
+<p><a href="https://alembic.sqlalchemy.org/en/latest/">Alembic</a> es la forma de hacerlo con SQLAlchemy, pero no está dentro de los alcances del proyecto.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../recopilacion/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Recopilación">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Recopilación
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../exploracion/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Exploración">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Exploración
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "content.tooltips", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

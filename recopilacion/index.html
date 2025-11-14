@@ -1,0 +1,942 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../objetivos/">
+      
+      
+        <link rel="next" href="../almacenamiento/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/plot.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Recopilación - Proyecto de Programación de Modelos Probabilísticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#recopilacion-de-datos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-header__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../images/plot.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto de Programación de Modelos Probabilísticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Recopilación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../objetivos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Objetivos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Recopilación
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../almacenamiento/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Almacenamiento
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../exploracion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Exploración
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../modelado/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Modelado
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../instrucciones/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Instrucciones
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../requisitos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Requisitos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../atributos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Atributos
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-nav__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../images/plot.png" alt="logo">
+
+    </a>
+    Proyecto de Programación de Modelos Probabilísticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objetivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objetivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recopilación
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recopilación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fuentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fuentes de datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fuentes de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelos-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datos-desde-fuentes-externas-con-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datos desde fuentes externas con API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datos-desde-fuentes-externas-con-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datos desde fuentes externas con MQTT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recopilacion-de-datos-en-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recopilación de datos en el proyecto
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../almacenamiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Almacenamiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exploracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modelado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instrucciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrucciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atributos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atributos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="recopilacion-de-datos">Recopilación de datos</h1>
+<p>El análisis de datos comienza con la <em>recopilación</em> de datos. Podríamos separar la recopilación en dos grandes paradigmas:</p>
+<ul>
+<li><strong>Procesamiento por lotes</strong> (<em>batch processing</em>): consiste en la recolección de una gran cantidad de datos históricos, típicamente una sola vez, o con una frecuencia tan baja que cada recopilación tiene una gran cantidad de datos. Ejemplos: los "famosos" datos de pasajeros del Titanic, los cuales necesariamente fueron recolectados una sola vez, o la información que utiliza YouTube o Netflix para entrenar sus sistemas de recomendaciones que, aunque son actualizados diariamente, contienen millones de nuevas interacciones en cada recopilación.</li>
+<li><strong>Procesamiento en tiempo real</strong> (<em>real-time processing</em>): consiste en la recolección de datos al momento de su ocurrencia, esto es, basado en eventos (<em>event-driven</em>) o bien con una frecuencia de recopilación tan alta que solamente algunos pocos nuevos datos, o ninguno, son obtenidos en cada muestreo. Ejemplos: datos sobre terremotos, valores diarios de los mercados de valores o mediciones de redes de sensores recopiladas cada 10 segundos.</li>
+</ul>
+<p>En medio de ambos hay una "zona gris", a menudo llamada <strong>procesamiento en tiempo casi real</strong> (<em>quasi real-time processing</em>), que captura la dinámica del sistema sin responder directamente a eventos o sin una frecuencia tan alta. Por ejemplo, la telemetría y rastreo en vehículos de transporte público actualiza datos cada 15 o 20 segundos, lo cual es suficiente para tener una buena estimación de su posición, pero no es totalmente "en tiempo real".</p>
+<p>La definición, entonces, varía según el fenómeno analizado, que puede tener cambios muy frecuentes o no. Por ejemplo: un muestreo anual podría ser "tiempo real" en el análisis de fenómenos geológicos (lentos, por naturaleza).</p>
+<div class="admonition note">
+<p class="admonition-title">Definición informal de procesamiento en tiempo real</p>
+<p>Un flujo de datos en el cual el procesamiento de una nueva muestra inicia en el momento de su llegada y concluye antes de la llegada de la siguiente muestra o evento.</p>
+</div>
+<h2 id="fuentes-de-datos">Fuentes de datos</h2>
+<p>Los datos pueden venir de un solo archivo (ejemplo, un <code>.xlsx</code> o <code>.csv</code>), directamente de un sensor (ejemplo, un Arduino conectado a la computadora con un sensor de temperatura), o de una base de datos externa, siguiendo varios <em>modelos de comunicación</em> posibles, explicados a continuación.</p>
+<h3 id="modelos-de-comunicacion">Modelos de comunicación</h3>
+<p>Algunos de los modelos de comunicación para compartir datos entre sistemas son:</p>
+<ul>
+<li><strong>Solicitud/respuesta</strong>: donde una <em>solicitud</em> del <em>cliente</em> interactúa con los <em>recursos</em> de un <em>servidor</em> que devuelve una <em>respuesta</em>. Ejemplo: HTTP (el famoso "404 Not Found" es uno de los <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Status">códigos de estado de respuesta</a> posibles) o las interfaces de programación de aplicaciones web (web API, <em>Application Programming Interface</em>) que operan sobre HTTP y conectan distintos servicios de forma <em>programática</em>. </li>
+<li><strong>Publicación/suscripción</strong>: donde un <em>productor</em> (<em>producer</em>) <em>publica</em> un <em>mensaje</em> que coloca en un <em>canal</em> sobre un <em>tópico</em> y un <em>intermediador de mensajes</em> (<em>message broker</em>) lo distribuye a todos los procesos que están <em>suscritos</em>. Ejemplo: el monitoreo de eventos en la agricultura de precisión con una red de sensores conectada con <a href="https://mqtt.org/">MQTT</a>. </li>
+<li><strong>WebSockets</strong>: donde hay un canal de comunicación <em>bidireccional</em> con comunicación <em>persistente</em>. Ejemplo: en cualquier aplicación de chat (WhatsApp, Telegram, etc.) o videojuegos en línea, en las que la acción de un cliente es reflejada en los otros la interfaz de los otros clientes. Por ejemplo: cuando dice "<em>Fulanito está escribiendo…</em>" en un chat. Nota: HTTP es una conexión no persistente, a diferencia de los WebSockets.</li>
+<li><strong>Otros</strong></li>
+</ul>
+<p>Una de las soluciones más populares es obtener datos de fuentes externas, y hacerlo por medio de un API o <em>interfaz de programación de aplicaciones</em>, como está descrito a continuación.</p>
+<h3 id="datos-desde-fuentes-externas-con-api">Datos desde fuentes externas con API</h3>
+<p>En el <strong>PyX</strong> número 6 (<a href="https://github.com/improbabilidades/PyX">Py6</a>) hay una amplia explicación sobre los web API y el uso del paquete <code>requests</code> de Python.</p>
+<p>Hay una gran cantidad de API públicos disponibles en <a href="https://publicapis.dev/">Public APIs</a> para experimentar con la recolección de datos.</p>
+<p>El siguiente es un ejemplo con el API de GitHub, donde está disponible la información de la cuenta de las personas registradas.</p>
+<div class="highlight"><span class="filename">playground.ipynb</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># Usuario(a) de GitHub</span>
+<span class="n">usuario</span> <span class="o">=</span> <span class="s2">&quot;fabianabarca&quot;</span>
+
+<span class="c1"># Construir la URL</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.github.com/users/&quot;</span> <span class="o">+</span> <span class="n">usuario</span>
+
+<span class="c1"># Hacer la solicitud GET y guardar un &quot;Response&quot; en la variable r</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">)</span>
+
+<span class="c1"># Convertir la información obtenida en JSON</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Extraer y mostrar algún dato particular</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compañía:&quot;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="s2">&quot;company&quot;</span><span class="p">])</span>
+
+<span class="c1"># Resultado</span>
+<span class="c1"># Compañía: Universidad de Costa Rica</span>
+</code></pre></div>
+<p><strong>Nota</strong>: En el archivo <code>playground.ipynb</code> (Notebook de Jupyter) de este repositorio pueden experimentar con este código.</p>
+<h3 id="datos-desde-fuentes-externas-con-mqtt">Datos desde fuentes externas con MQTT</h3>
+<p>MQTT (<em>Message Queuing Telemetry Transport</em>) es un protocolo de mensajería ligero y eficiente, diseñado para la comunicación entre dispositivos en redes con recursos limitados y bajo ancho de banda, como los del Internet de las Cosas (IoT). Utiliza el modelo pub/sub descrito anteriormente.</p>
+<pre class="mermaid"><code>flowchart TD
+    P[Publicador]
+    B[Intermediador]
+    S1[Suscriptor 1]
+    S2[Suscriptor 2]
+    S3[Suscriptor 3]
+
+    P --&gt; |"Envía mensajes"| B
+    B --&gt; |"Distribuye mensajes"| S1
+    B --&gt; |"Distribuye mensajes"| S2
+    B --&gt; |"Distribuye mensajes"| S3
+</code></pre>
+<p>Todos los suscriptores a un tema van a recibir instantáneamente el mensaje enviado por el publicador. </p>
+<h2 id="recopilacion-de-datos-en-el-proyecto">Recopilación de datos en el proyecto</h2>
+<p>Para este proyecto haremos una recopilación de datos en <strong>tiempo real</strong> de un intermediador <strong>MQTT</strong>, para almacenarlos en una <strong>base de datos relacional</strong>.</p>
+<p>Para esto es necesario un cliente MQTT, capaz de hacer una conexión TCP a un intermediador (<em>broker</em>), suscribirse a uno o más tópicos y recibir en tiempo real los mensajes en esos canales.</p>
+<div class="admonition info">
+<p class="admonition-title">Pruebas en un cliente MQTT en el navegador web</p>
+<p>Es posible usar el sitio https://testclient-cloud.mqtt.cool/, en donde:</p>
+<ul>
+<li>Configuración de la conexión ⚙️<ul>
+<li><em>Protocol</em>: tcp</li>
+<li><em>Host</em>: mqtt.simovi.org</li>
+<li><em>Port</em>: 1883</li>
+<li><em>Username</em>: admin</li>
+<li><em>Password</em>: admin</li>
+<li><em>Save changes</em></li>
+</ul>
+</li>
+<li><em>Connect</em></li>
+<li><em>Subscriptions</em>: test</li>
+<li><em>QoS 0</em></li>
+<li><em>Subscribe</em></li>
+<li>Algunos mensajes deberían aparecer en la ventana.</li>
+</ul>
+</div>
+<p>El cliente MQTT será desarrollado con Python, a través del paquete <a href="https://pypi.org/project/paho-mqtt/"><code>paho-mqtt</code></a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../objetivos/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Objetivos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Objetivos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../almacenamiento/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Almacenamiento">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Almacenamiento
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "content.tooltips", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
