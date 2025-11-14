@@ -41,7 +41,11 @@ def on_message(client, userdata, msg):
     """Callback para cuando se recibe un mensaje del broker"""
     try:
         topic = msg.topic
-        payload = msg.payload.decode("utf-8")
+        # Intentar decodificar como UTF-8, si falla usar Latin-1
+        try:
+            payload = msg.payload.decode("utf-8")
+        except UnicodeDecodeError:
+            payload = msg.payload.decode("latin-1")
 
         logger.info(f"Mensaje recibido en el tópico '{topic}': {payload[:100]}...")
 

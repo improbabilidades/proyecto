@@ -9,7 +9,7 @@ class Base(DeclarativeBase):
     pass
 
 
-# Load environment variables from .env file
+# Cargar las variables ambiente desde el archivo .env
 load_dotenv()
 
 # Datos de configuración
